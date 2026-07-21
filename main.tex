@@ -82,7 +82,7 @@ De este modo, podemos pensar que una esquina parte de su posición inicial en el
 \end{equation}
 Es decir $\sigma\in S_{8}$ donde les asignamos números a las esquinas en dicho orden. Y una arista se identifica con una biyección
 \begin{equation}\label{eq:numeros_arista}
-     \tau\in \text{Biy}\{\u\b,\u\r,\u\f,\u\l,\b\l,\b\r,\f\r,\f\l,\d\b,\d\r,\d\f,\d\l\}
+    \tau\in \text{Biy}\{\u\b,\u\r,\u\f,\u\l,\b\l,\b\r,\f\r,\f\l,\d\b,\d\r,\d\f,\d\l\}
 \end{equation}
 Es decir $\tau\in S_{12}$, donde se le asigna un número a cada arista en dicho orden.
 \bigskip
@@ -110,170 +110,170 @@ Recordando que cada esquina y arista tiene un número asociado, en el orden de l
 
 Hagamos un ejemplo de esto. Digamos que tomamos el cubo de la posición inicial, y se realiza un giro alrededor de la cara \r. En la notación que tenemos, ¿cuál sería la posición resultante?.
 \begin{figure}
-\centering
-\begin{tikzpicture}[scale=1]
-\def\s{0.9} % lado de cada cuadrado
-\begin{scope}[shift={(0,0)}]
-% Cuadrícula central 3x3
-\foreach \x in {0,1,2}
-  \foreach \y in {0,1,2}
-    \draw (\x*\s,\y*\s) rectangle ++(\s,\s);
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \def\s{0.9} % lado de cada cuadrado
+        \begin{scope}[shift={(0,0)}]
+            % Cuadrícula central 3x3
+            \foreach \x in {0,1,2}
+            \foreach \y in {0,1,2}
+            \draw (\x*\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa superior (3x1)
-\foreach \x in {0,1,2}
-    \draw (\x*\s,3*\s) rectangle ++(\s,\s);
+            % Solapa superior (3x1)
+            \foreach \x in {0,1,2}
+            \draw (\x*\s,3*\s) rectangle ++(\s,\s);
 
-% Solapa inferior (3x1)
-\foreach \x in {0,1,2}
-    \draw (\x*\s,-\s) rectangle ++(\s,\s);
+            % Solapa inferior (3x1)
+            \foreach \x in {0,1,2}
+            \draw (\x*\s,-\s) rectangle ++(\s,\s);
 
-% Solapa izquierda (1x3)
-\foreach \y in {0,1,2}
-    \draw (-\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa izquierda (1x3)
+            \foreach \y in {0,1,2}
+            \draw (-\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa derecha (1x3)
-\foreach \y in {0,1,2}
-    \draw (3*\s,\y*\s) rectangle ++(\s,\s);
-    
-\foreach \x in {0,1,2}
-  \foreach \y in {0,1,2}
-    \filldraw[fill=red!70,draw=black]
-      (\x*\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa derecha (1x3)
+            \foreach \y in {0,1,2}
+            \draw (3*\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa superior (amarillo)
-\foreach \x in {0,1,2}
-    \filldraw[fill=yellow!70,draw=black]
-      (\x*\s,3*\s) rectangle ++(\s,\s);
+            \foreach \x in {0,1,2}
+            \foreach \y in {0,1,2}
+            \filldraw[fill=red!70,draw=black]
+            (\x*\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa inferior (blanco)
-\foreach \x in {0,1,2}
-    \filldraw[fill=white,draw=black]
-      (\x*\s,-\s) rectangle ++(\s,\s);
+            % Solapa superior (amarillo)
+            \foreach \x in {0,1,2}
+            \filldraw[fill=yellow!70,draw=black]
+            (\x*\s,3*\s) rectangle ++(\s,\s);
 
-% Solapa izquierda (azul)
-\foreach \y in {0,1,2}
-    \filldraw[fill=blue!70,draw=black]
-      (-\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa inferior (blanco)
+            \foreach \x in {0,1,2}
+            \filldraw[fill=white,draw=black]
+            (\x*\s,-\s) rectangle ++(\s,\s);
 
-% Solapa derecha (verde)
-\foreach \y in {0,1,2}
-    \filldraw[fill=green!70,draw=black]
-      (3*\s,\y*\s) rectangle ++(\s,\s);
-\foreach \x/\y/\l in {
-0/2/2,1/2/2,2/2/3,
-0/1/7,1/1/R,2/1/6,
-0/0/7,1/0/{10},2/0/8,
-0/3/\circ,1/3/\circ,2/3/\circ,
-0/-1/\circ,1/-1/\circ,2/-1/\circ,
--1/2/,-1/1/\circ,-1/0/,
-3/2/,3/1/\circ,3/0/}
-{
-\node at ({(\x+0.5)*\s},{(\y+0.5)*\s}) {$\l$};
-}
-\foreach \x in {0,1}
-    \foreach \y in {0,1}
-        \draw[ultra thick] (\x*\s+\s,3*\y*\s+\s) -- (\x*\s+\s,3*\y*\s-\s);
-\foreach \x in {0,1}
-    \foreach \y in {0,1}
-        \draw[ultra thick] (3*\x*\s+\s,\y*\s+\s) -- (3*\x*\s-\s,\y*\s+\s);
-\begin{scope}[
-    >=Stealth,
-    thick,
-    blue!70,
-    line cap=round
-]
-% Flecha superior
-\draw[->]
-(-0.4*\s,4.7*\s)
-.. controls (0.6*\s,5.3*\s) and (2.4*\s,5.3*\s) ..
-(3.4*\s,4.7*\s);
+            % Solapa izquierda (azul)
+            \foreach \y in {0,1,2}
+            \filldraw[fill=blue!70,draw=black]
+            (-\s,\y*\s) rectangle ++(\s,\s);
 
-% Flecha derecha
-\draw[->]
-(4.7*\s,3.4*\s)
-.. controls (5.3*\s,2.4*\s) and (5.3*\s,0.6*\s) ..
-(4.7*\s,-0.4*\s);
+            % Solapa derecha (verde)
+            \foreach \y in {0,1,2}
+            \filldraw[fill=green!70,draw=black]
+            (3*\s,\y*\s) rectangle ++(\s,\s);
+            \foreach \x/\y/\l in {
+                    0/2/2,1/2/2,2/2/3,
+                    0/1/7,1/1/R,2/1/6,
+                    0/0/7,1/0/{10},2/0/8,
+                    0/3/\circ,1/3/\circ,2/3/\circ,
+                    0/-1/\circ,1/-1/\circ,2/-1/\circ,
+                    -1/2/,-1/1/\circ,-1/0/,
+                    3/2/,3/1/\circ,3/0/}
+                {
+                    \node at ({(\x+0.5)*\s},{(\y+0.5)*\s}) {$\l$};
+                }
+            \foreach \x in {0,1}
+            \foreach \y in {0,1}
+            \draw[ultra thick] (\x*\s+\s,3*\y*\s+\s) -- (\x*\s+\s,3*\y*\s-\s);
+            \foreach \x in {0,1}
+            \foreach \y in {0,1}
+            \draw[ultra thick] (3*\x*\s+\s,\y*\s+\s) -- (3*\x*\s-\s,\y*\s+\s);
+            \begin{scope}[
+                    >=Stealth,
+                    thick,
+                    blue!70,
+                    line cap=round
+                ]
+                % Flecha superior
+                \draw[->]
+                (-0.4*\s,4.7*\s)
+                .. controls (0.6*\s,5.3*\s) and (2.4*\s,5.3*\s) ..
+                (3.4*\s,4.7*\s);
 
-% Flecha inferior
-\draw[->]
-(3.4*\s,-1.7*\s)
-.. controls (2.4*\s,-2.3*\s) and (0.6*\s,-2.3*\s) ..
-(-0.4*\s,-1.7*\s);
+                % Flecha derecha
+                \draw[->]
+                (4.7*\s,3.4*\s)
+                .. controls (5.3*\s,2.4*\s) and (5.3*\s,0.6*\s) ..
+                (4.7*\s,-0.4*\s);
 
-% Flecha izquierda
-\draw[->]
-(-1.7*\s,-0.4*\s)
-.. controls (-2.3*\s,0.6*\s) and (-2.3*\s,2.4*\s) ..
-(-1.7*\s,3.4*\s);
+                % Flecha inferior
+                \draw[->]
+                (3.4*\s,-1.7*\s)
+                .. controls (2.4*\s,-2.3*\s) and (0.6*\s,-2.3*\s) ..
+                (-0.4*\s,-1.7*\s);
 
-\end{scope}
-\end{scope}
-\begin{scope}[shift={(10*\s,0)}]
-    \foreach \x in {0,1,2}
-  \foreach \y in {0,1,2}
-    \draw (\x*\s,\y*\s) rectangle ++(\s,\s);
+                % Flecha izquierda
+                \draw[->]
+                (-1.7*\s,-0.4*\s)
+                .. controls (-2.3*\s,0.6*\s) and (-2.3*\s,2.4*\s) ..
+                (-1.7*\s,3.4*\s);
 
-% Solapa superior (3x1)
-\foreach \x in {0,1,2}
-    \draw (\x*\s,3*\s) rectangle ++(\s,\s);
+            \end{scope}
+        \end{scope}
+        \begin{scope}[shift={(10*\s,0)}]
+            \foreach \x in {0,1,2}
+            \foreach \y in {0,1,2}
+            \draw (\x*\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa inferior (3x1)
-\foreach \x in {0,1,2}
-    \draw (\x*\s,-\s) rectangle ++(\s,\s);
+            % Solapa superior (3x1)
+            \foreach \x in {0,1,2}
+            \draw (\x*\s,3*\s) rectangle ++(\s,\s);
 
-% Solapa izquierda (1x3)
-\foreach \y in {0,1,2}
-    \draw (-\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa inferior (3x1)
+            \foreach \x in {0,1,2}
+            \draw (\x*\s,-\s) rectangle ++(\s,\s);
 
-% Solapa derecha (1x3)
-\foreach \y in {0,1,2}
-    \draw (3*\s,\y*\s) rectangle ++(\s,\s);
-    
-\foreach \x in {0,1,2}
-  \foreach \y in {0,1,2}
-    \filldraw[fill=red!70,draw=black]
-      (\x*\s,\y*\s) rectangle ++(\s,\s);
-% Solapa superior (amarillo)
-\foreach \x in {0,1,2}
-    \filldraw[fill=blue!70,draw=black]
-      (\x*\s,3*\s) rectangle ++(\s,\s);
+            % Solapa izquierda (1x3)
+            \foreach \y in {0,1,2}
+            \draw (-\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa inferior (blanco)
-\foreach \x in {0,1,2}
-    \filldraw[fill=green!70,draw=black]
-      (\x*\s,-\s) rectangle ++(\s,\s);
+            % Solapa derecha (1x3)
+            \foreach \y in {0,1,2}
+            \draw (3*\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa izquierda (azul)
-\foreach \y in {0,1,2}
-    \filldraw[fill=white,draw=black]
-      (-\s,\y*\s) rectangle ++(\s,\s);
+            \foreach \x in {0,1,2}
+            \foreach \y in {0,1,2}
+            \filldraw[fill=red!70,draw=black]
+            (\x*\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa superior (amarillo)
+            \foreach \x in {0,1,2}
+            \filldraw[fill=blue!70,draw=black]
+            (\x*\s,3*\s) rectangle ++(\s,\s);
 
-% Solapa derecha (verde)
-\foreach \y in {0,1,2}
-    \filldraw[fill=yellow!70,draw=black]
-      (3*\s,\y*\s) rectangle ++(\s,\s);
-\foreach \x/\y/\l in {
-0/2/7,1/2/7,2/2/2,
-0/1/{10},1/1/R,2/1/2,
-0/0/8,1/0/6,2/0/3,
-0/3/*,1/3/*\circ,2/3/*,
-0/-1/*,1/-1/*\circ,2/-1/*,
--1/2/\circ,-1/1/*\circ,-1/0/\circ,
-3/2/\circ,3/1/*\circ,3/0/\circ}
-{
-\node at ({(\x+0.5)*\s},{(\y+0.5)*\s}) {$\l$};
-}
-\foreach \x in {0,1}
-    \foreach \y in {0,1}
-        \draw[ultra thick] (\x*\s+\s,3*\y*\s+\s) -- (\x*\s+\s,3*\y*\s-\s);
-\foreach \x in {0,1}
-    \foreach \y in {0,1}
-        \draw[ultra thick] (3*\x*\s+\s,\y*\s+\s) -- (3*\x*\s-\s,\y*\s+\s);
-\end{scope}
-\node[scale=3] at (6.7*\s,1.5*\s) {$\Longrightarrow$};
-\end{tikzpicture}
-\caption{Rotación de la cara \r. Se señala con $\circ$ las caras prioritarias de cada pieza antes, y con $*$ las caras prioritarias después. Se ven también los números asociados a cada pieza.}
-\label{fig:rotacion_de_la_cara_r}
+            % Solapa inferior (blanco)
+            \foreach \x in {0,1,2}
+            \filldraw[fill=green!70,draw=black]
+            (\x*\s,-\s) rectangle ++(\s,\s);
+
+            % Solapa izquierda (azul)
+            \foreach \y in {0,1,2}
+            \filldraw[fill=white,draw=black]
+            (-\s,\y*\s) rectangle ++(\s,\s);
+
+            % Solapa derecha (verde)
+            \foreach \y in {0,1,2}
+            \filldraw[fill=yellow!70,draw=black]
+            (3*\s,\y*\s) rectangle ++(\s,\s);
+            \foreach \x/\y/\l in {
+                    0/2/7,1/2/7,2/2/2,
+                    0/1/{10},1/1/R,2/1/2,
+                    0/0/8,1/0/6,2/0/3,
+                    0/3/*,1/3/*\circ,2/3/*,
+                    0/-1/*,1/-1/*\circ,2/-1/*,
+                    -1/2/\circ,-1/1/*\circ,-1/0/\circ,
+                    3/2/\circ,3/1/*\circ,3/0/\circ}
+                {
+                    \node at ({(\x+0.5)*\s},{(\y+0.5)*\s}) {$\l$};
+                }
+            \foreach \x in {0,1}
+            \foreach \y in {0,1}
+            \draw[ultra thick] (\x*\s+\s,3*\y*\s+\s) -- (\x*\s+\s,3*\y*\s-\s);
+            \foreach \x in {0,1}
+            \foreach \y in {0,1}
+            \draw[ultra thick] (3*\x*\s+\s,\y*\s+\s) -- (3*\x*\s-\s,\y*\s+\s);
+        \end{scope}
+        \node[scale=3] at (6.7*\s,1.5*\s) {$\Longrightarrow$};
+    \end{tikzpicture}
+    \caption{Rotación de la cara \r. Se señala con $\circ$ las caras prioritarias de cada pieza antes, y con $*$ las caras prioritarias después. Se ven también los números asociados a cada pieza.}
+    \label{fig:rotacion_de_la_cara_r}
 \end{figure}
 Siguiendo la figura \ref{fig:rotacion_de_la_cara_r} se ve que las aristas mantienen su orientación inicial al coincidir la cara prioritaria antes del giro, con la cara prioritaria después del giro. En cambio las esquinas cambian de orientación. Tenemos que
 
@@ -289,21 +289,21 @@ Siguiendo la figura \ref{fig:rotacion_de_la_cara_r} se ve que las aristas mantie
 \end{itemize}
 Entonces el elemento de $X$ del que estamos hablando tiene como $\sigma, \tau$, los siguientes, usando notación de ciclos.
 \begin{align*}
-    \sigma&=\begin{pmatrix}
-        \u\r\f&\u\b\r&\d\r\b&\d\f\r
-    \end{pmatrix}\\
-    \tau&=\begin{pmatrix}
-        \f\r&\u\r&\b\r&\d\r
-    \end{pmatrix}
+    \sigma & =\begin{pmatrix}
+                  \u\r\f & \u\b\r & \d\r\b & \d\f\r
+              \end{pmatrix} \\
+    \tau   & =\begin{pmatrix}
+                  \f\r & \u\r & \b\r & \d\r
+              \end{pmatrix}
 \end{align*}
 o bien, usando los números de las piezas
 \begin{align*}
-    \sigma&=\begin{pmatrix}
-        2&3&8&7
-    \end{pmatrix}\\
-    \tau&=\begin{pmatrix}
-        7&2&6&10
-    \end{pmatrix}
+    \sigma & =\begin{pmatrix}
+                  2 & 3 & 8 & 7
+              \end{pmatrix} \\
+    \tau   & =\begin{pmatrix}
+                  7 & 2 & 6 & 10
+              \end{pmatrix}
 \end{align*}
 Las orientaciones de aristas quedan nulas, por quedar todo igual
 \begin{align*}
@@ -318,10 +318,10 @@ Las esquinas que no fueron involucradas en la rotación, que son la $1,4,5,6$ ma
 El elemento de $X$ que representa la configuración tras haber rotado la cara \r{} es entonces
 \begin{align*}
     R=\left(\begin{pmatrix}
-        2&3&8&7
-    \end{pmatrix},\begin{pmatrix}
-        7&2&6&10
-    \end{pmatrix},(0,1,2,0,0,0,2,1),\mathbf{0}\right)
+                2 & 3 & 8 & 7
+            \end{pmatrix},\begin{pmatrix}
+                              7 & 2 & 6 & 10
+                          \end{pmatrix},(0,1,2,0,0,0,2,1),\mathbf{0}\right)
 \end{align*}
 Este proceso se hizo sobre el cubo en el estado resuelto. Pero lo que podemos notar es que si el cubo está en un estado cualquiera
 \begin{align*}
@@ -329,248 +329,248 @@ Este proceso se hizo sobre el cubo en el estado resuelto. Pero lo que podemos no
 \end{align*}
 se le puede aplicar la rotación sobre la cara \r{} y ver qué configuración queda después. Seguimos la figura \ref{fig:rotacion_de_la_cara_r_generica}, donde se muestra un estado genérico
 \begin{figure}
-\centering
-\begin{tikzpicture}[scale=1]
-\def\s{0.9} % lado de cada cuadrado
-\begin{scope}[shift={(0,0)}]
-% Cuadrícula central 3x3
-\foreach \x in {0,1,2}
-  \foreach \y in {0,1,2}
-    \draw (\x*\s,\y*\s) rectangle ++(\s,\s);
+    \centering
+    \begin{tikzpicture}[scale=1]
+        \def\s{0.9} % lado de cada cuadrado
+        \begin{scope}[shift={(0,0)}]
+            % Cuadrícula central 3x3
+            \foreach \x in {0,1,2}
+            \foreach \y in {0,1,2}
+            \draw (\x*\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa superior (3x1)
-\foreach \x in {0,1,2}
-    \draw (\x*\s,3*\s) rectangle ++(\s,\s);
+            % Solapa superior (3x1)
+            \foreach \x in {0,1,2}
+            \draw (\x*\s,3*\s) rectangle ++(\s,\s);
 
-% Solapa inferior (3x1)
-\foreach \x in {0,1,2}
-    \draw (\x*\s,-\s) rectangle ++(\s,\s);
+            % Solapa inferior (3x1)
+            \foreach \x in {0,1,2}
+            \draw (\x*\s,-\s) rectangle ++(\s,\s);
 
-% Solapa izquierda (1x3)
-\foreach \y in {0,1,2}
-    \draw (-\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa izquierda (1x3)
+            \foreach \y in {0,1,2}
+            \draw (-\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa derecha (1x3)
-\foreach \y in {0,1,2}
-    \draw (3*\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa derecha (1x3)
+            \foreach \y in {0,1,2}
+            \draw (3*\s,\y*\s) rectangle ++(\s,\s);
 
-\filldraw[fill=green!70,draw=black]
-      (0*\s,2*\s) rectangle ++(\s,\s);
-\filldraw[fill=red!70,draw=black]
-      (1*\s,2*\s) rectangle ++(\s,\s);
-\filldraw[fill=green!70,draw=black]
-      (2*\s,2*\s) rectangle ++(\s,\s);
-\filldraw[fill=red!70,draw=black]
-      (0*\s,1*\s) rectangle ++(\s,\s);
-\filldraw[fill=red!70,draw=black]
-      (1*\s,1*\s) rectangle ++(\s,\s);
-\filldraw[fill=blue!70,draw=black]
-      (2*\s,1*\s) rectangle ++(\s,\s);
-\filldraw[fill=blue!70,draw=black]
-      (0*\s,0*\s) rectangle ++(\s,\s);
-\filldraw[fill=white,draw=black]
-      (1*\s,0*\s) rectangle ++(\s,\s);
-\filldraw[fill=white,draw=black]
-      (2*\s,0*\s) rectangle ++(\s,\s);
+            \filldraw[fill=green!70,draw=black]
+            (0*\s,2*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (1*\s,2*\s) rectangle ++(\s,\s);
+            \filldraw[fill=green!70,draw=black]
+            (2*\s,2*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (0*\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (1*\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=blue!70,draw=black]
+            (2*\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=blue!70,draw=black]
+            (0*\s,0*\s) rectangle ++(\s,\s);
+            \filldraw[fill=white,draw=black]
+            (1*\s,0*\s) rectangle ++(\s,\s);
+            \filldraw[fill=white,draw=black]
+            (2*\s,0*\s) rectangle ++(\s,\s);
 
-% Solapa superior 
-\filldraw[fill=orange!70,draw=black]
-    (0,3*\s) rectangle ++(\s,\s);
-\filldraw[fill=yellow!70,draw=black]
-    (\s,3*\s) rectangle ++(\s,\s);
-\filldraw[fill=red!70,draw=black]
-    (2*\s,3*\s) rectangle ++(\s,\s);
+            % Solapa superior 
+            \filldraw[fill=orange!70,draw=black]
+            (0,3*\s) rectangle ++(\s,\s);
+            \filldraw[fill=yellow!70,draw=black]
+            (\s,3*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (2*\s,3*\s) rectangle ++(\s,\s);
 
-% Solapa inferior 
-    \filldraw[fill=orange!70,draw=black]
-      (0*\s,-\s) rectangle ++(\s,\s);
-    \filldraw[fill=blue!70,draw=black]
-      (1*\s,-\s) rectangle ++(\s,\s);
-    \filldraw[fill=orange!70,draw=black]
-      (2*\s,-\s) rectangle ++(\s,\s);
+            % Solapa inferior 
+            \filldraw[fill=orange!70,draw=black]
+            (0*\s,-\s) rectangle ++(\s,\s);
+            \filldraw[fill=blue!70,draw=black]
+            (1*\s,-\s) rectangle ++(\s,\s);
+            \filldraw[fill=orange!70,draw=black]
+            (2*\s,-\s) rectangle ++(\s,\s);
 
-% Solapa izquierda
-    \filldraw[fill=yellow!70,draw=black]
-      (-\s,0*\s) rectangle ++(\s,\s);
-    \filldraw[fill=green!70,draw=black]
-      (-\s,1*\s) rectangle ++(\s,\s);
-    \filldraw[fill=yellow!70,draw=black]
-      (-\s,2*\s) rectangle ++(\s,\s);
+            % Solapa izquierda
+            \filldraw[fill=yellow!70,draw=black]
+            (-\s,0*\s) rectangle ++(\s,\s);
+            \filldraw[fill=green!70,draw=black]
+            (-\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=yellow!70,draw=black]
+            (-\s,2*\s) rectangle ++(\s,\s);
 
-% Solapa derecha 
-\foreach \y in {0,1,2}
-    \filldraw[fill=yellow!70,draw=black]
-      (3*\s,2*\s) rectangle ++(\s,\s);
-    \filldraw[fill=red!70,draw=black]
-      (3*\s,1*\s) rectangle ++(\s,\s);
-    \filldraw[fill=green!70,draw=black]
-      (3*\s,0*\s) rectangle ++(\s,\s);
-\foreach \x/\y/\l in {
-0/2/,1/2/,2/2/,
-0/1/,1/1/R,2/1/\circ,
-0/0/,1/0/\circ,2/0/\circ,
-0/3/,1/3/\circ,2/3/,
-0/-1/,1/-1/,2/-1/,
--1/2/\circ,-1/1/\circ,-1/0/\circ,
-3/2/\circ,3/1/,3/0/}
-{
-\node at ({(\x+0.5)*\s},{(\y+0.5)*\s}) {$\l$};
-}
-\foreach \x in {0,1}
-    \foreach \y in {0,1}
-        \draw[ultra thick] (\x*\s+\s,3*\y*\s+\s) -- (\x*\s+\s,3*\y*\s-\s);
-\foreach \x in {0,1}
-    \foreach \y in {0,1}
-        \draw[ultra thick] (3*\x*\s+\s,\y*\s+\s) -- (3*\x*\s-\s,\y*\s+\s);
-\begin{scope}[
-    >=Stealth,
-    thick,
-    blue!70,
-    line cap=round
-]
-% Flecha superior
-\draw[->]
-(-0.4*\s,4.7*\s)
-.. controls (0.6*\s,5.3*\s) and (2.4*\s,5.3*\s) ..
-(3.4*\s,4.7*\s);
+            % Solapa derecha 
+            \foreach \y in {0,1,2}
+            \filldraw[fill=yellow!70,draw=black]
+            (3*\s,2*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (3*\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=green!70,draw=black]
+            (3*\s,0*\s) rectangle ++(\s,\s);
+            \foreach \x/\y/\l in {
+                    0/2/,1/2/,2/2/,
+                    0/1/,1/1/R,2/1/\circ,
+                    0/0/,1/0/\circ,2/0/\circ,
+                    0/3/,1/3/\circ,2/3/,
+                    0/-1/,1/-1/,2/-1/,
+                    -1/2/\circ,-1/1/\circ,-1/0/\circ,
+                    3/2/\circ,3/1/,3/0/}
+                {
+                    \node at ({(\x+0.5)*\s},{(\y+0.5)*\s}) {$\l$};
+                }
+            \foreach \x in {0,1}
+            \foreach \y in {0,1}
+            \draw[ultra thick] (\x*\s+\s,3*\y*\s+\s) -- (\x*\s+\s,3*\y*\s-\s);
+            \foreach \x in {0,1}
+            \foreach \y in {0,1}
+            \draw[ultra thick] (3*\x*\s+\s,\y*\s+\s) -- (3*\x*\s-\s,\y*\s+\s);
+            \begin{scope}[
+                    >=Stealth,
+                    thick,
+                    blue!70,
+                    line cap=round
+                ]
+                % Flecha superior
+                \draw[->]
+                (-0.4*\s,4.7*\s)
+                .. controls (0.6*\s,5.3*\s) and (2.4*\s,5.3*\s) ..
+                (3.4*\s,4.7*\s);
 
-% Flecha derecha
-\draw[->]
-(4.7*\s,3.4*\s)
-.. controls (5.3*\s,2.4*\s) and (5.3*\s,0.6*\s) ..
-(4.7*\s,-0.4*\s);
+                % Flecha derecha
+                \draw[->]
+                (4.7*\s,3.4*\s)
+                .. controls (5.3*\s,2.4*\s) and (5.3*\s,0.6*\s) ..
+                (4.7*\s,-0.4*\s);
 
-% Flecha inferior
-\draw[->]
-(3.4*\s,-1.7*\s)
-.. controls (2.4*\s,-2.3*\s) and (0.6*\s,-2.3*\s) ..
-(-0.4*\s,-1.7*\s);
+                % Flecha inferior
+                \draw[->]
+                (3.4*\s,-1.7*\s)
+                .. controls (2.4*\s,-2.3*\s) and (0.6*\s,-2.3*\s) ..
+                (-0.4*\s,-1.7*\s);
 
-% Flecha izquierda
-\draw[->]
-(-1.7*\s,-0.4*\s)
-.. controls (-2.3*\s,0.6*\s) and (-2.3*\s,2.4*\s) ..
-(-1.7*\s,3.4*\s);
+                % Flecha izquierda
+                \draw[->]
+                (-1.7*\s,-0.4*\s)
+                .. controls (-2.3*\s,0.6*\s) and (-2.3*\s,2.4*\s) ..
+                (-1.7*\s,3.4*\s);
 
-\end{scope}
-\end{scope}
-\begin{scope}[shift={(10*\s,0)}]
-% Cuadrícula central 3x3
-\foreach \x in {0,1,2}
-  \foreach \y in {0,1,2}
-    \draw (\x*\s,\y*\s) rectangle ++(\s,\s);
+            \end{scope}
+        \end{scope}
+        \begin{scope}[shift={(10*\s,0)}]
+            % Cuadrícula central 3x3
+            \foreach \x in {0,1,2}
+            \foreach \y in {0,1,2}
+            \draw (\x*\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa superior (3x1)
-\foreach \x in {0,1,2}
-    \draw (\x*\s,3*\s) rectangle ++(\s,\s);
+            % Solapa superior (3x1)
+            \foreach \x in {0,1,2}
+            \draw (\x*\s,3*\s) rectangle ++(\s,\s);
 
-% Solapa inferior (3x1)
-\foreach \x in {0,1,2}
-    \draw (\x*\s,-\s) rectangle ++(\s,\s);
+            % Solapa inferior (3x1)
+            \foreach \x in {0,1,2}
+            \draw (\x*\s,-\s) rectangle ++(\s,\s);
 
-% Solapa izquierda (1x3)
-\foreach \y in {0,1,2}
-    \draw (-\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa izquierda (1x3)
+            \foreach \y in {0,1,2}
+            \draw (-\s,\y*\s) rectangle ++(\s,\s);
 
-% Solapa derecha (1x3)
-\foreach \y in {0,1,2}
-    \draw (3*\s,\y*\s) rectangle ++(\s,\s);
+            % Solapa derecha (1x3)
+            \foreach \y in {0,1,2}
+            \draw (3*\s,\y*\s) rectangle ++(\s,\s);
 
-\filldraw[fill=blue!70,draw=black]
-      (0*\s,2*\s) rectangle ++(\s,\s);
-\filldraw[fill=red!70,draw=black]
-      (1*\s,2*\s) rectangle ++(\s,\s);
-\filldraw[fill=green!70,draw=black]
-      (2*\s,2*\s) rectangle ++(\s,\s);
-\filldraw[fill=white,draw=black]
-      (0*\s,1*\s) rectangle ++(\s,\s);
-\filldraw[fill=red!70,draw=black]
-      (1*\s,1*\s) rectangle ++(\s,\s);
-\filldraw[fill=red!70,draw=black]
-      (2*\s,1*\s) rectangle ++(\s,\s);
-\filldraw[fill=white,draw=black]
-      (0*\s,0*\s) rectangle ++(\s,\s);
-\filldraw[fill=blue!70,draw=black]
-      (1*\s,0*\s) rectangle ++(\s,\s);
-\filldraw[fill=green!70,draw=black]
-      (2*\s,0*\s) rectangle ++(\s,\s);
+            \filldraw[fill=blue!70,draw=black]
+            (0*\s,2*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (1*\s,2*\s) rectangle ++(\s,\s);
+            \filldraw[fill=green!70,draw=black]
+            (2*\s,2*\s) rectangle ++(\s,\s);
+            \filldraw[fill=white,draw=black]
+            (0*\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (1*\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (2*\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=white,draw=black]
+            (0*\s,0*\s) rectangle ++(\s,\s);
+            \filldraw[fill=blue!70,draw=black]
+            (1*\s,0*\s) rectangle ++(\s,\s);
+            \filldraw[fill=green!70,draw=black]
+            (2*\s,0*\s) rectangle ++(\s,\s);
 
-% Solapa superior 
-\filldraw[fill=yellow!70,draw=black]
-    (0,3*\s) rectangle ++(\s,\s);
-\filldraw[fill=green!70,draw=black]
-    (\s,3*\s) rectangle ++(\s,\s);
-\filldraw[fill=yellow!70,draw=black]
-    (2*\s,3*\s) rectangle ++(\s,\s);
+            % Solapa superior 
+            \filldraw[fill=yellow!70,draw=black]
+            (0,3*\s) rectangle ++(\s,\s);
+            \filldraw[fill=green!70,draw=black]
+            (\s,3*\s) rectangle ++(\s,\s);
+            \filldraw[fill=yellow!70,draw=black]
+            (2*\s,3*\s) rectangle ++(\s,\s);
 
-% Solapa inferior 
-    \filldraw[fill=green!70,draw=black]
-      (0*\s,-\s) rectangle ++(\s,\s);
-    \filldraw[fill=red!70,draw=black]
-      (1*\s,-\s) rectangle ++(\s,\s);
-    \filldraw[fill=yellow!70,draw=black]
-      (2*\s,-\s) rectangle ++(\s,\s);
+            % Solapa inferior 
+            \filldraw[fill=green!70,draw=black]
+            (0*\s,-\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (1*\s,-\s) rectangle ++(\s,\s);
+            \filldraw[fill=yellow!70,draw=black]
+            (2*\s,-\s) rectangle ++(\s,\s);
 
-% Solapa izquierda
-    \filldraw[fill=orange!70,draw=black]
-      (-\s,0*\s) rectangle ++(\s,\s);
-    \filldraw[fill=blue!70,draw=black]
-      (-\s,1*\s) rectangle ++(\s,\s);
-    \filldraw[fill=orange!70,draw=black]
-      (-\s,2*\s) rectangle ++(\s,\s);
+            % Solapa izquierda
+            \filldraw[fill=orange!70,draw=black]
+            (-\s,0*\s) rectangle ++(\s,\s);
+            \filldraw[fill=blue!70,draw=black]
+            (-\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=orange!70,draw=black]
+            (-\s,2*\s) rectangle ++(\s,\s);
 
-% Solapa derecha 
-\foreach \y in {0,1,2}
-    \filldraw[fill=orange!70,draw=black]
-      (3*\s,2*\s) rectangle ++(\s,\s);
-    \filldraw[fill=yellow!70,draw=black]
-      (3*\s,1*\s) rectangle ++(\s,\s);
-    \filldraw[fill=red!70,draw=black]
-      (3*\s,0*\s) rectangle ++(\s,\s);
-\foreach \x/\y/\l in {
-0/2/,1/2/,2/2/,
-0/1/\circ,1/1/R,2/1/,
-0/0/\circ,1/0/\circ,2/0/,
-0/3/*\circ,1/3/*\circ,2/3/*\circ,
-0/-1/*,1/-1/*,2/-1/*\circ,
--1/2/,-1/1/*,-1/0/,
-3/2/,3/1/*\circ,3/0/}
-{
-\node at ({(\x+0.5)*\s},{(\y+0.5)*\s}) {$\l$};
-}
-\foreach \x in {0,1}
-    \foreach \y in {0,1}
-        \draw[ultra thick] (\x*\s+\s,3*\y*\s+\s) -- (\x*\s+\s,3*\y*\s-\s);
-\foreach \x in {0,1}
-    \foreach \y in {0,1}
-        \draw[ultra thick] (3*\x*\s+\s,\y*\s+\s) -- (3*\x*\s-\s,\y*\s+\s);
-\end{scope}
-\node[scale=3] at (6.7*\s,1.5*\s) {$\Longrightarrow$};
-\end{tikzpicture}
-\caption{Rotación de la cara \r. Se señala con $\circ$ las caras prioritarias de cada pieza en el estado armado, y con $*$ las caras prioritarias después. Este estado salió de un cubo de Rubik real, mezclado}
-\label{fig:rotacion_de_la_cara_r_generica}
+            % Solapa derecha 
+            \foreach \y in {0,1,2}
+            \filldraw[fill=orange!70,draw=black]
+            (3*\s,2*\s) rectangle ++(\s,\s);
+            \filldraw[fill=yellow!70,draw=black]
+            (3*\s,1*\s) rectangle ++(\s,\s);
+            \filldraw[fill=red!70,draw=black]
+            (3*\s,0*\s) rectangle ++(\s,\s);
+            \foreach \x/\y/\l in {
+                    0/2/,1/2/,2/2/,
+                    0/1/\circ,1/1/R,2/1/,
+                    0/0/\circ,1/0/\circ,2/0/,
+                    0/3/*\circ,1/3/*\circ,2/3/*\circ,
+                    0/-1/*,1/-1/*,2/-1/*\circ,
+                    -1/2/,-1/1/*,-1/0/,
+                    3/2/,3/1/*\circ,3/0/}
+                {
+                    \node at ({(\x+0.5)*\s},{(\y+0.5)*\s}) {$\l$};
+                }
+            \foreach \x in {0,1}
+            \foreach \y in {0,1}
+            \draw[ultra thick] (\x*\s+\s,3*\y*\s+\s) -- (\x*\s+\s,3*\y*\s-\s);
+            \foreach \x in {0,1}
+            \foreach \y in {0,1}
+            \draw[ultra thick] (3*\x*\s+\s,\y*\s+\s) -- (3*\x*\s-\s,\y*\s+\s);
+        \end{scope}
+        \node[scale=3] at (6.7*\s,1.5*\s) {$\Longrightarrow$};
+    \end{tikzpicture}
+    \caption{Rotación de la cara \r. Se señala con $\circ$ las caras prioritarias de cada pieza en el estado armado, y con $*$ las caras prioritarias después. Este estado salió de un cubo de Rubik real, mezclado}
+    \label{fig:rotacion_de_la_cara_r_generica}
 \end{figure}
 notamos que la transformación que realizó sobre el estado genérico es el siguiente.
 \begin{align*}
-    R(\sigma,\tau,x,y)&=\big(\begin{pmatrix}
-        2& 3&8&7
-    \end{pmatrix}\circ \sigma,\begin{pmatrix}
-        7&2&6&10
-    \end{pmatrix}\circ \tau,\\&,(x_1,x_7+1,x_2+2,x_4,x_5,x_6,x_8+2,x_3+1),(y_1,y_7,y_3,y_4,y_5,y_2,y_{10},y_8,y_9,y_{6},y_{11},y_{12})\big)
+    R(\sigma,\tau,x,y) & =\big(\begin{pmatrix}
+                                   2 & 3 & 8 & 7
+                               \end{pmatrix}\circ \sigma,\begin{pmatrix}
+                                                             7 & 2 & 6 & 10
+                                                         \end{pmatrix}\circ \tau, \\&,(x_1,x_7+1,x_2+2,x_4,x_5,x_6,x_8+2,x_3+1),(y_1,y_7,y_3,y_4,y_5,y_2,y_{10},y_8,y_9,y_{6},y_{11},y_{12})\big)
 \end{align*}
 Es decir que el estado se compone con la transformación que habíamos sacado antes para $R$. Esto tiene sentido. En una configuración arbitraria, si se añade una rotación \r{} a la cadena de permutaciones de aristas y esquinas que se tuvo que hacer para llegar a dicho estado, se le añade la rotación en \r{}.
 
 Lo que no es tan intuitivo son las orientaciones. Pero también puede pensarse como que la rotación en \r{} siempre trae el valor de la esquina que llega al nuevo lugar, y siempre añade el mismo número de desorientaciones respecto de la posición original. Una manera mas sucinta de notar a $R$ es.
 \begin{align*}
-    R(\sigma,\tau,x,y)&=\big(\begin{pmatrix}
-        2& 3&8&7
-    \end{pmatrix}\circ \sigma,\begin{pmatrix}
-        7&2&6&10
-    \end{pmatrix}\circ \tau,\begin{pmatrix}
-        2& 3&8&7
-    \end{pmatrix}x+(0,1,2,0,0,0,2,1),\begin{pmatrix}
-        7&2&6&10
-    \end{pmatrix}y\big)
+    R(\sigma,\tau,x,y) & =\big(\begin{pmatrix}
+                                   2 & 3 & 8 & 7
+                               \end{pmatrix}\circ \sigma,\begin{pmatrix}
+                                                             7 & 2 & 6 & 10
+                                                         \end{pmatrix}\circ \tau,\begin{pmatrix}
+                                                                                     2 & 3 & 8 & 7
+                                                                                 \end{pmatrix}x+(0,1,2,0,0,0,2,1),\begin{pmatrix}
+                                                                                                                      7 & 2 & 6 & 10
+                                                                                                                  \end{pmatrix}y\big)
 \end{align*}
 que representa el hecho de que a las orientaciones se le aplica el mismo ciclo que a las esquinas o aristas respectivamente.
 
@@ -578,19 +578,19 @@ Notar también que $R$ tiene inversa. Esta sería lógicamente una rotación ant
 \begin{align*}
     R^{-1}(\sigma,\tau,x,y)=\left(R_{\sigma}^{-1}\circ \sigma,R_{\tau}^{-1}\circ \tau,R_{\sigma}^{-1}x-R_{\sigma}^{-1}x_R,R_{\tau}^{-1}y\right)
 \end{align*}
-donde 
+donde
 \begin{align*}
-    x_R:&=(0,1,2,0,0,0,2,1)\\
-    R_{\sigma}^{-1}&=\begin{pmatrix}
-    7&8&3&2
-\end{pmatrix}\\
-    R_{\tau}^{-1}&=\begin{pmatrix}
-        10&6&2&7
-    \end{pmatrix}
+    x_R:            & =(0,1,2,0,0,0,2,1)  \\
+    R_{\sigma}^{-1} & =\begin{pmatrix}
+                           7 & 8 & 3 & 2
+                       \end{pmatrix} \\
+    R_{\tau}^{-1}   & =\begin{pmatrix}
+                           10 & 6 & 2 & 7
+                       \end{pmatrix}
 \end{align*}
 notar que
 \begin{align*}
-        -R_{\sigma}^{-1}x_R=-(0,2,1,0,0,0,1,2)=(0,1,2,0,0,0,2,1)=x_R
+    -R_{\sigma}^{-1}x_R=-(0,2,1,0,0,0,1,2)=(0,1,2,0,0,0,2,1)=x_R
 \end{align*}
 de modo que
 \begin{align*}
@@ -606,51 +606,51 @@ Ya tenemos una manera de darle nombre y apellido a todas las configuraciones en 
 
 El modo de pensar los movimientos del cubo, es como se hizo con $R$. Cada uno de los giros de cara, es una función invertible de $X$. Esto es, son elementos de $S_X$ (el grupo de funciones biyectivas de $X\to X$). Verificar que todas están en $S_X$, parece trivial porque toda rotación de cara tiene su inversa. Sin embargo, en nuestro formalismo, cada función debe analizarse caso a caso. Pero como se vio, no es nada difícil. Sólo algo tedioso. Las expresiones en notación de los seis giros horarios de cara se presentan en la tabla \ref{tab:transformaciones_caras}.
 \begin{table}
-\small
-\setlength{\arraycolsep}{2pt}
-\renewcommand{\arraystretch}{1.2}
+    \small
+    \setlength{\arraycolsep}{2pt}
+    \renewcommand{\arraystretch}{1.2}
     \centering
     \begin{tabular}{|c|c|c|c|c|}
-\hline
- & $S_{8}$ & $S_{12}$ & $(\Z/3\Z)^{8}$ & $(\Z/2\Z)^{12}$\\
-\hline
-R &
-$\begin{pmatrix}2&3&8&7\end{pmatrix}\circ\sigma$ &
-$\begin{pmatrix}7&2&6&10\end{pmatrix}\circ\tau $&
-$\begin{pmatrix}2&3&8&7\end{pmatrix}x+(0,1,2,0,0,0,2,1)$ &
-$\begin{pmatrix}2&3&8&7\end{pmatrix}y+\mathbf{0}$
-\\
-L &
-$\begin{pmatrix}6&5&4&1\end{pmatrix}\circ\sigma$ &
-$\begin{pmatrix}5&4&8&12\end{pmatrix}\circ\tau$ &
-$\begin{pmatrix}6&5&4&1\end{pmatrix}x+(2,0,0,1,2,1,0,0)$ &
-$\begin{pmatrix}5&4&8&12\end{pmatrix}y+\mathbf{0}$
-\\
-U &
-$\begin{pmatrix}4&3&2&1\end{pmatrix}\circ\sigma$ &
-$\begin{pmatrix}1&2&3&4\end{pmatrix}\circ\tau$ &
-$\begin{pmatrix}4&3&2&1\end{pmatrix}x$ &
-$\begin{pmatrix}1&2&3&4\end{pmatrix}y$
-\\
-D &
-$\begin{pmatrix}5&6&7&8\end{pmatrix}\circ\sigma$ &
-$\begin{pmatrix}12&11&10&9\end{pmatrix}\circ\tau$ &
-$\begin{pmatrix}5&6&7&8\end{pmatrix}x$ &
-$\begin{pmatrix}12&11&10&9\end{pmatrix}y$
-\\
-F &
-$\begin{pmatrix}1&2&7&6\end{pmatrix}\circ\sigma$ &
-$\begin{pmatrix}3&7&11&8\end{pmatrix}\circ\tau$ &
-$\begin{pmatrix}1&2&7&6\end{pmatrix}x+(1,2,0,0,0,2,1,0)$ &
-$\begin{pmatrix}3&7&11&8\end{pmatrix}y+(0,0,1,0,0,0,1,1,0,0,1,0)$
-\\
-B &
-$\begin{pmatrix}3&4&5&8\end{pmatrix}\circ\sigma$ &
-$\begin{pmatrix}1&5&9&6\end{pmatrix}\circ\tau$ &
-$\begin{pmatrix}3&4&5&8\end{pmatrix}x+(0,0,1,2,1,0,0,2)$ &
-$\begin{pmatrix}1&5&9&6\end{pmatrix}y+(1,0,0,0,1,1,0,0,1,0,0,0)$
-\\
-\hline
+        \hline
+                                                                 & $S_{8}$ & $S_{12}$ & $(\Z/3\Z)^{8}$ & $(\Z/2\Z)^{12}$ \\
+        \hline
+        R                                                        &
+        $\begin{pmatrix}2&3&8&7\end{pmatrix}\circ\sigma$         &
+        $\begin{pmatrix}7&2&6&10\end{pmatrix}\circ\tau $         &
+        $\begin{pmatrix}2&3&8&7\end{pmatrix}x+(0,1,2,0,0,0,2,1)$ &
+        $\begin{pmatrix}2&3&8&7\end{pmatrix}y+\mathbf{0}$
+        \\
+        L                                                        &
+        $\begin{pmatrix}6&5&4&1\end{pmatrix}\circ\sigma$         &
+        $\begin{pmatrix}5&4&8&12\end{pmatrix}\circ\tau$          &
+        $\begin{pmatrix}6&5&4&1\end{pmatrix}x+(2,0,0,1,2,1,0,0)$ &
+        $\begin{pmatrix}5&4&8&12\end{pmatrix}y+\mathbf{0}$
+        \\
+        U                                                        &
+        $\begin{pmatrix}4&3&2&1\end{pmatrix}\circ\sigma$         &
+        $\begin{pmatrix}1&2&3&4\end{pmatrix}\circ\tau$           &
+        $\begin{pmatrix}4&3&2&1\end{pmatrix}x$                   &
+        $\begin{pmatrix}1&2&3&4\end{pmatrix}y$
+        \\
+        D                                                        &
+        $\begin{pmatrix}5&6&7&8\end{pmatrix}\circ\sigma$         &
+        $\begin{pmatrix}12&11&10&9\end{pmatrix}\circ\tau$        &
+        $\begin{pmatrix}5&6&7&8\end{pmatrix}x$                   &
+        $\begin{pmatrix}12&11&10&9\end{pmatrix}y$
+        \\
+        F                                                        &
+        $\begin{pmatrix}1&2&7&6\end{pmatrix}\circ\sigma$         &
+        $\begin{pmatrix}3&7&11&8\end{pmatrix}\circ\tau$          &
+        $\begin{pmatrix}1&2&7&6\end{pmatrix}x+(1,2,0,0,0,2,1,0)$ &
+        $\begin{pmatrix}3&7&11&8\end{pmatrix}y+(0,0,1,0,0,0,1,1,0,0,1,0)$
+        \\
+        B                                                        &
+        $\begin{pmatrix}3&4&5&8\end{pmatrix}\circ\sigma$         &
+        $\begin{pmatrix}1&5&9&6\end{pmatrix}\circ\tau$           &
+        $\begin{pmatrix}3&4&5&8\end{pmatrix}x+(0,0,1,2,1,0,0,2)$ &
+        $\begin{pmatrix}1&5&9&6\end{pmatrix}y+(1,0,0,0,1,1,0,0,1,0,0,0)$
+        \\
+        \hline
     \end{tabular}
     \caption{Las seis transformaciones de rotación horaria de caras aplicadas a una configuración genérica $(\sigma,\tau,x,y)$, en la notación del espacio de configuraciones $X$}
     \label{tab:transformaciones_caras}
@@ -676,13 +676,13 @@ De modo que un subgrupo de $S_X$ también es finito, aunque astronómicamente gr
 
 La manera de pensar a los movimientos de caras aplicados sobre el cubo algebráicamente, es entendiendo a la aplicación de los elementos del grupo $\G$ sobre $X$ como una acción a izquierda sobre el espacio de configuraciones.
 \begin{align*}
-    eval&:\G \times X\to X\\
-    eval&(g,c)=g(c)
+    eval & :\G \times X\to X \\
+    eval & (g,c)=g(c)
 \end{align*}
 donde $c=(\sigma,\tau,x,y)\in X$ y $g\in S_X$. Es evidente que satisface los axiomas de acción
 \begin{align*}
-    eval(h,eval(g,c))&=h(g(c))=h\circ g(c)=eval(h\circ g,c)\\
-    eval(e,c)&=e(c)=Id(c)=c
+    eval(h,eval(g,c)) & =h(g(c))=h\circ g(c)=eval(h\circ g,c) \\
+    eval(e,c)         & =e(c)=Id(c)=c
 \end{align*}
 
 Con toda la construcción de la notación, lo que nos interesa sobre el cubo, es caracterizar a la órbita del estado resuelto $(1,1,\mathbf{0},\mathbf{0})$ (llamamos $1$ a la identidad). Pues se trata de todos los estados que pueden alcanzarse mediante movimientos de cara. Es decir, todas las posibles configuraciones \comillas{legales}, del cubo de Rubik. Sin desarmarlo o rotar piezas.
@@ -693,13 +693,13 @@ Para encontrar propiedades del grupo en general, analizamos algunas propiedades 
 \end{propiedad}
 \begin{proof}
     Sea $T$ el conjunto de todos los posibles productos finitos de $S$. Al ser $\langle S\rangle$ un grupo que contiene a $S$, entonces contiene todos sus productos finitos, es decir $T\subseteq \langle S\rangle$. Para ver la otra contención, queremos ver que $T$ es subgrupo.
-    
+
     El producto vacío hace que el neutro $e\in T$. Y además $T$ es cerrado por productos, porque un producto de dos productos finitos de elementos de $S$, sigue siendo, un producto finito de elementos de $S$.
-    
+
     Tenemos entonces que $T$ es cerrado por productos y tiene al neutro, ahora bien, ¿Tiene todos los inversos? Esto sale de la finitud de $G$. Sea $s\in S$, si hacemos producto consigo mismo $s^n$ al cabo de suficientes iteraciones volvemos a alguno de los anteriores elementos de la cadena (de otro modo la cadena es infinita). Es decir $s^{n_1}=s^{n_2}$ con $n_2< n_1$. En tal caso por propiedad cancelativa $s^{n_1-n_2}=e$. Es decir $s^{n}=e$ para algún $n$ suficientemente grande. Entonces $T$ tiene a los inversos de los elementos de $S$, que serían $s^{n-1}$ para cada $s\in S$. Y los productos finitos de elementos invertibles, son invertibles.
 
-    Tenemos entonces que $T$ es subgrupo, y contiene a $S$, entonces como $ \langle S\rangle$ es el mas pequeño con tal propiedad, $\langle S\rangle\subseteq T$. 
-    
+    Tenemos entonces que $T$ es subgrupo, y contiene a $S$, entonces como $ \langle S\rangle$ es el mas pequeño con tal propiedad, $\langle S\rangle\subseteq T$.
+
     De las dos contenciones tenemos $T=\langle S\rangle$
 \end{proof}
 Ahora el lema.
@@ -723,109 +723,137 @@ Lo que nos permite el lema es, pensando al $P$ como un conjunto de elementos que
 \bigskip
 La primera propiedad que veremos es la siguiente.
 \begin{propiedad}
-Dada una configuración en la órbita del estado resuelto $(\sigma,\tau,x,y)\in \mathcal{O}(1,1,\mathbf{0},\mathbf{0})$. Este cumple
-\begin{align*}
-    \sgn{\sigma}=\sgn{\tau}
-\end{align*}
+    Dada una configuración $(\sigma,\tau,x,y)\in X$. Sea $M\in \G$, se cumple
+    \begin{align*}
+        \frac{\sgn{\sigma}}{\sgn{\tau}}=\frac{\sgn{M\sigma}}{\sgn{M\tau}}
+    \end{align*}
 \end{propiedad}
 \begin{proof}
-    Sea
+    Sea $(\sigma,\tau,x,y)\in X$, llamamos
     \begin{align*}
-        P_1:=\{(\sigma,\tau,x,y)\in X: \sgn{\sigma}=\sgn{\tau}\}
+        P:=\{(\sigma',\tau',x',y')\in X: \frac{\sgn{\sigma'}}{\sgn{\tau'}}=\frac{\sgn{\sigma}}{\sgn{\tau}}\}
     \end{align*}
-    El estado resuelto está en $P_1$ trivialmente porque $\sgn{1}=\sgn{1}=1$. Supongamos que $(\sigma,\tau,x,y)\in P_1$. Si tomamos $M=R,L,U,D,F,B$ (cualquiera de ellos) vemos que las componentes primera y segunda de $M\cdot (\sigma,\tau,x,y)$ son
+    El estado $(\sigma,\tau,x,y)$ está en $P$ trivialmente porque $\frac{\sgn{\sigma}}{\sgn{\tau}}=\frac{\sgn{\sigma}}{\sgn{\tau}}$. Si tomamos $M_0=R,L,U,D,F,B$ (cualquiera de ellos) vemos que las componentes primera y segunda de $M_0\cdot (\sigma,\tau,x,y)$ son
     \begin{align*}
-        M\sigma=s\circ \sigma\quad M\tau=t\circ \tau
+        M_0\sigma=s\circ \sigma\quad M\tau=t\circ \tau
     \end{align*}
     con las $s,t$ 4-ciclos en todos los casos, como puede verse en la tabla \ref{tab:transformaciones_caras}. Como el signo es morfismo de grupos.
     \begin{align*}
-        \sgn{s\circ \sigma}=\sgn{s}\sgn{\sigma}\\
+        \sgn{s\circ \sigma}=\sgn{s}\sgn{\sigma} \\
         \sgn{t\circ \tau}=\sgn{t}\sgn{\tau}
     \end{align*}
     y consideramos que todos los 4-ciclos tienen signo $-1$. Porque pueden ponerse como
     \begin{align*}
         \begin{pmatrix}
-            a&b&c&d
+            a & b & c & d
         \end{pmatrix}=\begin{pmatrix}
-            a&d
-        \end{pmatrix}\circ\begin{pmatrix}
-            a&c
-        \end{pmatrix}\circ\begin{pmatrix}
-            a&b
-        \end{pmatrix}
+                          a & d
+                      \end{pmatrix}\circ\begin{pmatrix}
+                                            a & c
+                                        \end{pmatrix}\circ\begin{pmatrix}
+                                                              a & b
+                                                          \end{pmatrix}
     \end{align*}
-    Tenemos que como $(\sigma,\tau,x,y)\in P_1$ entonces cumple la propiedad. Así
+    Tenemos que
     \begin{align*}
-        \sgn{\sigma}=\sgn{\tau}\implies -\sgn{\sigma}&=-\sgn{\tau}\implies \sgn{s}\sgn{\sigma}=\sgn{t}\sgn{\tau}\\
-        \therefore \sgn{s\circ \sigma}&=\sgn{t\circ \tau}
+        \frac{\sgn{s\circ\sigma}}{\sgn{t\circ\tau}}=\frac{-\sgn{\sigma}}{-\sgn{\tau}}\implies M_0(\sigma,\tau,x,y)\in P
     \end{align*}
-    concluyendo $M\cdot (\sigma,\tau,x,y)\in P_1$. Por \ref{lema:lema_de_grupos_finitos} tenemos
+    concluyendo $M_0\cdot (\sigma,\tau,x,y)\in P$. Por \ref{lema:lema_de_grupos_finitos} tenemos
     \begin{align*}
-        \mathcal{O}(1,1,\mathbf{0},\mathbf{0})\subseteq P_1
+        M\cdot (\sigma,\tau,x,y)\in P
     \end{align*}
+    para cualquier $M\in \G$
+\end{proof}
+en el caso del estado resuelto tenemos
+\begin{corolario}
+    Dada una configuración en la órbita del estado resuelto $(\sigma,\tau,x,y)\in \mathcal{O}(1,1,\mathbf{0},\mathbf{0})$. Este cumple
+    \begin{align*}
+        \sgn{\sigma}=\sgn{\tau}
+    \end{align*}
+\end{corolario}
+\begin{proof}
+    Por la propiedad anterior, tomando $(\sigma,\tau,x,y)=(1,1,\mathbf{0},\mathbf{0})$. Y considerando que $\sgn{1}=1$.
 \end{proof}
 Vamos con otra propiedad
 \begin{propiedad}
-    Dada una configuración en la órbita del estado resuelto $(\sigma,\tau,x,y)\in \mathcal{O}(1,1,\mathbf{0},\mathbf{0})$. Este cumple
-\begin{align*}
-    \sum_{i=1}^8 x_i\equiv 0\mod 3
-\end{align*}
+    Dada una configuración $(\sigma,\tau,x,y)\in X$. Sea $M\in \G$, se cumple
+    \begin{align*}
+        \sum_{i=1}^8 M x_i\equiv \sum_{i=1}^8 x_i\mod 3
+    \end{align*}
 \end{propiedad}
 \begin{proof}
-    Sea
+    Sea $(\sigma,\tau,x,y)\in X$, llamamos
     \begin{align*}
-        P_2:=\left\{(\sigma,\tau,x,y)\in X: \sum_{i=1}^8 x_i\equiv 0\mod 3\right\}
+        P:=\left\{(\sigma',\tau',x',y')\in X: \sum_{i=1}^8 x_i'\equiv \sum_{i=1}^8 x_i \mod 3\right\}
     \end{align*}
-    el estado resuelto trivialmente está en $P_2$ porque $\sum_{i=1}^8 0=0\equiv 0\mod 3$.
-
-    Sea $(\sigma,\tau,x,y)\in P_2$. Tomamos $M=R,L,U,D,F,B$. Tenemos que la tercera componente de $M\cdot (\sigma,\tau,x,y)$, viendo la tabla \ref{tab:transformaciones_caras}, es una permutación $s$ de las componentes de $x$, sumado a un vector $k$ de suma $0$ o suma $6$. Entonces
+    el estado $(\sigma,\tau,x,y)\in P$ trivialmente porque $\sum_{i=1}^8 x_i\equiv \sum_{i=1}^8 x_i\mod{3}$. Tomamos $M_0=R,L,U,D,F,B$. Tenemos que la tercera componente de $M_0\cdot (\sigma,\tau,x,y)$, viendo la tabla \ref{tab:transformaciones_caras}, es una permutación $s$ de las componentes de $x$, sumado a un vector $k$ de suma $0$ o suma $6$. Entonces
     \begin{align*}
-        \sum_{i=1}^8 Mx_i=\sum_{i=1}^8 x_{s(i)}+\sum_{i=1}^8 k_i
+        \sum_{i=1}^8 M_0x_i=\sum_{i=1}^8 x_{s(i)}+\sum_{i=1}^8 k_i
     \end{align*}
     Permutar las componentes no altera la suma, y la suma de $k_i$ es $0$ o $6$ que son congruentes a $0$, de modo que
     \begin{align*}
-        \sum_{i=1}^8 Mx_i\equiv\sum_{i=1}^8x_i\equiv 0\mod 3
+        \sum_{i=1}^8 M_0 x_i\equiv\sum_{i=1}^8x_i\equiv 0\mod 3
     \end{align*}
-    es decir $M\cdot (\sigma,\tau,x,y)\in P_2$. Que por \ref{lema:lema_de_grupos_finitos} implica
+    es decir $M_0\cdot (\sigma,\tau,x,y)\in P$. Que por \ref{lema:lema_de_grupos_finitos} implica
     \begin{align*}
-        \mathcal{O}(1,1,\mathbf{0},\mathbf{0})\subseteq P_2
+        M\cdot (\sigma,\tau,x,y)\in P
     \end{align*}
+    para cualquier $M\in \G$
+\end{proof}
+y para el estado resuelto tenemos
+\begin{corolario}
+    Dada una configuración en la órbita del estado resuelto $(\sigma,\tau,x,y)\in \mathcal{O}(1,1,\mathbf{0},\mathbf{0})$. Este cumple
+    \begin{align*}
+        \sum_{i=1}^8 x_i\equiv 0\mod 3
+    \end{align*}
+\end{corolario}
+\begin{proof}
+    Por la propiedad anterior, tomando $(\sigma,\tau,x,y)=(1,1,\mathbf{0},\mathbf{0})$. Y considerando que $\sum_{i=1}^8 0\equiv 0\mod{3}$.
 \end{proof}
 Y la última
 \begin{propiedad}
-    Dada una configuración en la órbita del estado resuelto $(\sigma,\tau,x,y)\in \mathcal{O}(1,1,\mathbf{0},\mathbf{0})$. Este cumple
+    Dada una configuración $(\sigma,\tau,x,y)\in X$. Sea $M\in \G$, se cumple
     \begin{align*}
-        \sum_{i=1}^{12}y_i\equiv 0\mod 2
+        \sum_{i=1}^{12} M y_i\equiv \sum_{i=1}^{12} y_i\mod 2
     \end{align*}
 \end{propiedad}
 \begin{proof}
-    Sea
+    Sea $(\sigma,\tau,x,y)\in X$, llamamos
     \begin{align*}
-        P_3:=\left\{(\sigma,\tau,x,y)\in X: \sum_{i=1}^{12} y_i\equiv 0\mod 2\right\}
+        P:=\left\{(\sigma',\tau',x',y')\in X: \sum_{i=1}^{12} y_i'\equiv \sum_{i=1}^{12}y_i\mod 2\right\}
     \end{align*}
-    el estado resuelto trivialmente está en $P$ porque $\sum_{i=1}^{12} 0=0\equiv 0\mod 2$.
-
-    Sea $(\sigma,\tau,x,y)\in P_3$. Tomamos $M=R,L,U,D,F,B$. Tenemos que la cuarta componente de $M\cdot (\sigma,\tau,x,y)$, viendo la tabla \ref{tab:transformaciones_caras}, es una permutación $t$ de las componentes de $y$, sumado a un vector $k$ de suma $0$ o suma $4$. Entonces
+    el estado $(\sigma,\tau,x,y)\in P$ trivialmente porque $\sum_{i=1}^{12} y_i\equiv \sum_{i=1}^{12}y_i\mod 2$. Tomamos $M_0=R,L,U,D,F,B$. Tenemos que la cuarta componente de $M\cdot (\sigma,\tau,x,y)$, viendo la tabla \ref{tab:transformaciones_caras}, es una permutación $t$ de las componentes de $y$, sumado a un vector $k$ de suma $0$ o suma $4$. Entonces
     \begin{align*}
         \sum_{i=1}^{12} My_i=\sum_{i=1}^8 y_{t(i)}+\sum_{i=1}^8 k_i
     \end{align*}
     Permutar las componentes no altera la suma, y la suma de $k_i$ es $0$ o $4$ que son congruentes a $0$, de modo que
     \begin{align*}
-        \sum_{i=1}^8 My_i\equiv\sum_{i=1}^8y_i\equiv 0\mod 2
+        \sum_{i=1}^{12} My_i\equiv\sum_{i=1}^{12}y_i\equiv 0\mod 2
     \end{align*}
-    es decir $M\cdot (\sigma,\tau,x,y)\in P_3$. Que por \ref{lema:lema_de_grupos_finitos} implica
+    es decir $M_0\cdot (\sigma,\tau,x,y)\in P$. Que por \ref{lema:lema_de_grupos_finitos} implica
     \begin{align*}
-        \mathcal{O}(1,1,\mathbf{0},\mathbf{0})\subseteq P_3
+        M\cdot (\sigma,\tau,x,y)\in P
     \end{align*}
+    para cualquier $M\in \G$
 \end{proof}
-Tenemos entonces tres propiedades de la órbita. Es decir de los estados que pueden alcanzarse mediante movimientos de caras.
+en el caso del estado resuelto tenemos
+\begin{corolario}
+    Dada una configuración en la órbita del estado resuelto $(\sigma,\tau,x,y)\in \mathcal{O}(1,1,\mathbf{0},\mathbf{0})$. Este cumple
+    \begin{align*}
+        \sum_{i=1}^{12} y_i\equiv 0\mod 2
+    \end{align*}
+\end{corolario}
+\begin{proof}
+    Por la propiedad anterior, tomando $(\sigma,\tau,x,y)=(1,1,\mathbf{0},\mathbf{0})$. Y considerando que $\sum_{i=1}^{12} 0\equiv 0\mod{2}$.
+\end{proof}
+Estas son tres propiedades que se conservan al aplicar movimientos de caras. En particular para el estado resuelto, son propiedades de la órbita.
 
 Dicho de otra manera, llamando
 \begin{align*}
-    P_1&:=\left\{(\sigma,\tau,x,y)\in X:\sgn{\sigma}=\sgn{\tau}\right\}\\
-P_2&:=\left\{(\sigma,\tau,x,y)\in P_1:\sum_{i=1}^8 x_i\equiv 0\mod 3\right\}\\
-P&:=\left\{(\sigma,\tau,x,y)\in P_2:
-\sum_{i=1}^{12}y_i\equiv 0\mod 2\right\}
+    P_1 & :=\left\{(\sigma,\tau,x,y)\in X:\sgn{\sigma}=\sgn{\tau}\right\}          \\
+    P_2 & :=\left\{(\sigma,\tau,x,y)\in P_1:\sum_{i=1}^8 x_i\equiv 0\mod 3\right\} \\
+    P   & :=\left\{(\sigma,\tau,x,y)\in P_2:
+    \sum_{i=1}^{12}y_i\equiv 0\mod 2\right\}
 \end{align*}
 se tiene
 \begin{equation}\label{eq:contencion}
@@ -837,12 +865,12 @@ Antes de continuar, hagamos un conteo. Definamos
 \end{align*}
 Tenemos
 \begin{align*}
-    P_1\cup P_1'&=X\\
-    P_1,P_1'& \text{ disjuntos}
+    P_1\cup P_1' & =X                \\
+    P_1,P_1'     & \text{ disjuntos}
 \end{align*}
 Pero $P_1$ es biyectable a $P_1'$ mediante por ejemplo, aplicar $\begin{pmatrix}
-    1& 2
-\end{pmatrix}$ a la primera componente, que es invertible. O sea que tienen el mismo número de elementos. De modo que
+        1 & 2
+    \end{pmatrix}$ a la primera componente, que es invertible. O sea que tienen el mismo número de elementos. De modo que
 \begin{align*}
     |X|=|P_1|+|P_1'|=2|P_1|\implies |P_1|=\frac{|X|}{2}
 \end{align*}
@@ -850,12 +878,12 @@ Es decir que las configuraciones en $P_1$ son la mitad de las originales.
 
 Definamos ahora
 \begin{align*}
-    P_2'&:=\left\{(\sigma,\tau,x,y)\in P_1:\sum_{i=1}^8 x_i\equiv 1\mod 3\right\}\\
-    P_2''&:=\left\{(\sigma,\tau,x,y)\in P_1:\sum_{i=1}^8 x_i\equiv 2\mod 3\right\}
+    P_2'  & :=\left\{(\sigma,\tau,x,y)\in P_1:\sum_{i=1}^8 x_i\equiv 1\mod 3\right\} \\
+    P_2'' & :=\left\{(\sigma,\tau,x,y)\in P_1:\sum_{i=1}^8 x_i\equiv 2\mod 3\right\}
 \end{align*}
 Tenemos
 \begin{align*}
-    P_1=P_2\cup P_2'\cup P_2''\\
+    P_1=P_2\cup P_2'\cup P_2'' \\
     P_2,P_2',P_2''\text{ disjuntos}
 \end{align*}
 pero $P_2$ es biyectable a $P_2'$ y a $P_2''$ mediante por ejemplo, sumar $1$, y sumar $2$ a la primera componente de $x$. Que es invertible. Teniendo los tres el mismo número de elementos. De modo que
@@ -866,12 +894,12 @@ pero $P_2$ es biyectable a $P_2'$ y a $P_2''$ mediante por ejemplo, sumar $1$, y
 Y otra vez, definamos
 \begin{align*}
     P':=\left\{(\sigma,\tau,x,y)\in P_2:
-\sum_{i=1}^{12}y_i\equiv 1\mod 2\right\}
+    \sum_{i=1}^{12}y_i\equiv 1\mod 2\right\}
 \end{align*}
 que cumple
 \begin{align*}
-    P_2&=P\cup P'\\
-    P,P' &\text{ disjuntos}
+    P_2  & =P\cup P'         \\
+    P,P' & \text{ disjuntos}
 \end{align*}
 y son biyectables mediante sumar $1$ a la primera componente de $y$. Que es invertible. Tienen el mismo número de elementos. De modo que
 \begin{align*}
@@ -923,15 +951,15 @@ Una herramienta útil para el análisis de los elementos en $S_{8}$ y $S_{12}$, 
         \sigma^{d.c}(n_1)=n_1
     \end{align*}
     para cualquier $c\in \Z$
-    
+
     Tenemos entonces que $n_1\sim n_2$ quiere decir
     \begin{align*}
         \sigma^{k}(n_1)=n_2
     \end{align*}
     con $k\geq 0$. Dividimos $k$ entre $d$ con el algoritmo de división $k=d.c+r$ con $0\leq r<d$. Y aplicamos en la igualdad $\sigma^{d-r}$ a ambos lados.
     \begin{align*}
-        \sigma^{k+d-r}(n_1)&=\sigma^{d-r}(n_2)\\
-        \sigma^{d(c+1)}(n_1)=n_1&=\sigma^{d-r}(n_2)
+        \sigma^{k+d-r}(n_1)      & =\sigma^{d-r}(n_2) \\
+        \sigma^{d(c+1)}(n_1)=n_1 & =\sigma^{d-r}(n_2)
     \end{align*}
     y $d-r>0$, es decir no negativo. De modo que $n_2\sim n_1$.
 
@@ -948,10 +976,10 @@ Una herramienta útil para el análisis de los elementos en $S_{8}$ y $S_{12}$, 
     De este modo $\bar{n}_1$ está identificado con el ciclo.
     \begin{align*}
         \bar{n}_1\equiv \begin{pmatrix}
-            n_1&\sigma(n_1)&\dots& \sigma^{d-1}(n_1)
-        \end{pmatrix}
+                            n_1 & \sigma(n_1) & \dots & \sigma^{d-1}(n_1)
+                        \end{pmatrix}
     \end{align*}
-    \end{proof}
+\end{proof}
 Así, todas las transformaciones se pueden poner como una composición de ciclos disjuntos. Que tienen la ventaja de que conmutan entre sí.
 
 Nuestras transformaciones $R,L,U,D,F,B$ ya son todas 4-ciclos en $S_{8}$ y $S_{12}$. De modo que la propiedad no nos dice nada. Pero si componemos dos de ellas, podemos tener dos 4-ciclos no disjuntos. Y la transformación se debe descomponer en ciclos disjuntos.
@@ -960,47 +988,47 @@ Hacemos un ejemplo de cómo se hace esta descomposición.
 \begin{ejemplo}
     Digamos que $\sigma,\tau\in S_6$ definidos como
     \begin{align*}
-        \sigma&:=\begin{pmatrix}
-            1&3&4
-        \end{pmatrix}\begin{pmatrix}
-            2&5
-        \end{pmatrix}\\
-        \tau&:=\begin{pmatrix}
-            1&5
-        \end{pmatrix}\begin{pmatrix}
-            2& 4
-        \end{pmatrix}
+        \sigma & :=\begin{pmatrix}
+                       1 & 3 & 4
+                   \end{pmatrix}\begin{pmatrix}
+                                    2 & 5
+                                \end{pmatrix} \\
+        \tau   & :=\begin{pmatrix}
+                       1 & 5
+                   \end{pmatrix}\begin{pmatrix}
+                                    2 & 4
+                                \end{pmatrix}
     \end{align*}
     Si queremos $\sigma\circ \tau$, lo que hacemos es tomar un elemento involucrado, digamos $3$. Y vemos adónde termina cuando se le aplica $\sigma\circ\tau$. Para esto, vamos siguiendo donde termina con cada transformación. Por ejemplo
     \begin{align*}
         \sigma\circ\tau=\begin{pmatrix}
-            1&3&4
-        \end{pmatrix}\begin{pmatrix}
-            2&5
-        \end{pmatrix}\begin{pmatrix}
-            1&5
-        \end{pmatrix}\begin{pmatrix}
-            2& 4
-        \end{pmatrix}
+                            1 & 3 & 4
+                        \end{pmatrix}\begin{pmatrix}
+                                         2 & 5
+                                     \end{pmatrix}\begin{pmatrix}
+                                                      1 & 5
+                                                  \end{pmatrix}\begin{pmatrix}
+                                                                   2 & 4
+                                                               \end{pmatrix}
     \end{align*}
     La primera segunda y tercera transformaciones, no le afectan al $3$. La cuarta lo lleva a $4$. Tenemos $3\to 4$.
 
     Ahora vemos qué le pasa al $4$. La primera transformación le lleva al $2$, la segunda no le afecta, la tercera lleva el $2$ a $5$, y la cuarta no le afecta. Tenemos entonces $4\to 2\to 5$, que en total es $4\to 5$.
 
     Ahora vemos qué le pasa al $5$. Vemos que $5\to 1\to 3$ es decir $5\to 3$. Y con eso formamos nuestro primer ciclo $\begin{pmatrix}
-        3 &4& 5
-    \end{pmatrix}$. Para ver otro ciclo, iniciamos desde otro elemento. Digamos $1$.
-    
+            3 & 4 & 5
+        \end{pmatrix}$. Para ver otro ciclo, iniciamos desde otro elemento. Digamos $1$.
+
     Ahora vamos mas rápido. Notamos que $1\to 2$, y que $2\to 1$. Así que tenemos el ciclo $\begin{pmatrix}
-        1 & 2
-    \end{pmatrix}$
+            1 & 2
+        \end{pmatrix}$
     El único número de $I_6$ que faltaría es $6$, pero no es afectado por ninguna transformación, siendo así un ciclo trivial. Tenemos entonces.
     \begin{align*}
         \sigma\circ \tau=\begin{pmatrix}
-            3&4&5
-        \end{pmatrix}\begin{pmatrix}
-            1&2
-        \end{pmatrix}
+                             3 & 4 & 5
+                         \end{pmatrix}\begin{pmatrix}
+                                          1 & 2
+                                      \end{pmatrix}
     \end{align*}
 \end{ejemplo}
 En la notación de ciclos disjuntos, es fácil darse cuenta que una $\sigma$ que se descomponga sólo en 2-ciclos disjuntos, es 2-idempotente. Porque todos los ciclos conmutan, y la inversa de un 2-ciclo es él mismo.
@@ -1009,23 +1037,23 @@ Lo mismo para una $\sigma$ que se descomponga sólo en $k$-ciclos disjuntos ser�
 
 Podemos analizar cómo quedan las composiciones de un par de movimientos que compartan piezas. Por ejemplo
 \begin{align*}
-    (RD^{-1})_\sigma&=\begin{pmatrix}
-        2&3&8&7
-    \end{pmatrix}\begin{pmatrix}
-        8&7&6&5
-    \end{pmatrix}=\begin{pmatrix}
-        2&3&8
-    \end{pmatrix}
+    (RD^{-1})_\sigma & =\begin{pmatrix}
+                            2 & 3 & 8 & 7
+                        \end{pmatrix}\begin{pmatrix}
+                                         8 & 7 & 6 & 5
+                                     \end{pmatrix}=\begin{pmatrix}
+                                                       2 & 3 & 8
+                                                   \end{pmatrix}
     \begin{pmatrix}
-        5& 7 &6
-    \end{pmatrix}\\
-    (RD^{-1})_\tau&=\begin{pmatrix}
-        7 & 2 & 6 & 10
-    \end{pmatrix}\begin{pmatrix}
-        9 & 10 & 11 & 12
-    \end{pmatrix}=\begin{pmatrix}
-        2&6&10&11&12&9&7
-    \end{pmatrix}
+        5 & 7 & 6
+    \end{pmatrix}                                                              \\
+    (RD^{-1})_\tau   & =\begin{pmatrix}
+                            7 & 2 & 6 & 10
+                        \end{pmatrix}\begin{pmatrix}
+                                         9 & 10 & 11 & 12
+                                     \end{pmatrix}=\begin{pmatrix}
+                                                       2 & 6 & 10 & 11 & 12 & 9 & 7
+                                                   \end{pmatrix}
 \end{align*}
 \subsection{El conmutador}
 En un grupo $G$, el conmutador de dos elementos $[g,h]$ se define como
@@ -1045,20 +1073,20 @@ El que elegiremos computar será el conmutador $[R,D]$. La elección es arbitrar
 Comencemos mirando la parte en $S_8$.
 \begin{align*}
     R_\sigma\circ D_\sigma(\sigma)=\begin{pmatrix}
-        2&3&8&7
-    \end{pmatrix}\begin{pmatrix}
-        5&6&7&8
-    \end{pmatrix}\circ \sigma
+                                       2 & 3 & 8 & 7
+                                   \end{pmatrix}\begin{pmatrix}
+                                                    5 & 6 & 7 & 8
+                                                \end{pmatrix}\circ \sigma
 \end{align*}
 por asociatividad, analizamos sólo la interacción entre los 4-ciclos
 \begin{align*}
     \begin{pmatrix}
-        2&3&8&7
+        2 & 3 & 8 & 7
     \end{pmatrix}\begin{pmatrix}
-        5&6&7&8
-    \end{pmatrix}=
+                     5 & 6 & 7 & 8
+                 \end{pmatrix}=
     \begin{pmatrix}
-        2&3& 8&5&6
+        2 & 3 & 8 & 5 & 6
     \end{pmatrix}
 \end{align*}
 notar que $7$ quedó en un ciclo trivial. En el cubo esto se corresponde a que la esquina $7$ queda en el mismo lugar si se aplica $D$ y luego $R$.
@@ -1066,37 +1094,37 @@ notar que $7$ quedó en un ciclo trivial. En el cubo esto se corresponde a que l
 Ahora vemos
 \begin{align*}
     R_\sigma^{-1}\circ D_\sigma^{-1}=\begin{pmatrix}
-        7&8&3&2
-    \end{pmatrix}\begin{pmatrix}
-        8&7&6&5
-    \end{pmatrix}=
+                                         7 & 8 & 3 & 2
+                                     \end{pmatrix}\begin{pmatrix}
+                                                      8 & 7 & 6 & 5
+                                                  \end{pmatrix}=
     \begin{pmatrix}
-        2&7&6&5&3
+        2 & 7 & 6 & 5 & 3
     \end{pmatrix}
 \end{align*}
 que deja en el mismo lugar la esquina $8$. El conmutador es entonces
 \begin{align*}
     [R,D]_\sigma=\begin{pmatrix}
-        2&7&6&5&3
-    \end{pmatrix}\begin{pmatrix}
-        2&3& 8&5&6
-    \end{pmatrix}
+                     2 & 7 & 6 & 5 & 3
+                 \end{pmatrix}\begin{pmatrix}
+                                  2 & 3 & 8 & 5 & 6
+                              \end{pmatrix}
     =\begin{pmatrix}
-        3&8
-    \end{pmatrix}\begin{pmatrix}
-        6 & 7
-    \end{pmatrix}
+         3 & 8
+     \end{pmatrix}\begin{pmatrix}
+                      6 & 7
+                  \end{pmatrix}
 \end{align*}
 Ahora computamos el conmutador de la parte en $\tau$.
 \begin{align*}
     [R,D]_\tau=\begin{pmatrix}
-        6&11&10
-    \end{pmatrix}
+                   6 & 11 & 10
+               \end{pmatrix}
 \end{align*}
 Y en la parte $x$
 \begin{align*}
-    R_x\circ D_x(x)&=R_\sigma \circ (D_\sigma x)+x_R\\
-    R_x^{-1}\circ D_x^{-1}(x)&=R_{\sigma}^{-1}\circ D_\sigma^{-1}x+x_R
+    R_x\circ D_x(x)           & =R_\sigma \circ (D_\sigma x)+x_R         \\
+    R_x^{-1}\circ D_x^{-1}(x) & =R_{\sigma}^{-1}\circ D_\sigma^{-1}x+x_R
 \end{align*}
 usando que $R_\sigma,D_\sigma$ son morfismos para la suma entre vectores de $S_8$.
 \begin{align*}
@@ -1109,29 +1137,29 @@ Y en la parte $y$ no hay dificultad porque no se añade ningún vector
 En conclusión tenemos
 \begin{align*}
     [R,D]=\left(\begin{pmatrix}
-        3&8
-    \end{pmatrix}\begin{pmatrix}
-        6 & 7
-    \end{pmatrix}\sigma,\begin{pmatrix}
-        6&11&10
-    \end{pmatrix}\tau,\begin{pmatrix}
-        2&3
-    \end{pmatrix}\begin{pmatrix}
-        6 & 7
-    \end{pmatrix}x+(0,0,2,0,0,2,0,2),\begin{pmatrix}
-        6&11&10
-    \end{pmatrix}y\right)
+                    3 & 8
+                \end{pmatrix}\begin{pmatrix}
+                                 6 & 7
+                             \end{pmatrix}\sigma,\begin{pmatrix}
+                                                     6 & 11 & 10
+                                                 \end{pmatrix}\tau,\begin{pmatrix}
+                                                                       2 & 3
+                                                                   \end{pmatrix}\begin{pmatrix}
+                                                                                    6 & 7
+                                                                                \end{pmatrix}x+(0,0,2,0,0,2,0,2),\begin{pmatrix}
+                                                                                                                     6 & 11 & 10
+                                                                                                                 \end{pmatrix}y\right)
 \end{align*}
 De esta expresión se deducen algunas propiedades. Primeramente, como en $\sigma$ hay sólo 2-ciclos y en $\tau$ hay sólo 3-ciclos. Es 2-idempotente en su primera componente, y 3-idempotente en su segunda.
 
 Para que sea idempotente el total entonces, necesitamos potenciarlo a un número múltiplo de $6=\text{mcm}(2,3)$. Veamos que el número es $6$. En la primera segunda y cuarta componente no hay problema. La cuenta está en la tercera.
 \begin{align*}
-    [R,D]^6_x x=&[R,D]_\sigma^6 x+[R,D]_\sigma^5x_{[R,D]}+[R,D]_\sigma^4x_{[R,D]}+[R,D]_\sigma^3x_{[R,D]}+\\
-    &+[R,D]_\sigma^2x_{[R,D]}+[R,D]_\sigma x_{[R,D]}+x_{[R,D]}
+    [R,D]^6_x x= & [R,D]_\sigma^6 x+[R,D]_\sigma^5x_{[R,D]}+[R,D]_\sigma^4x_{[R,D]}+[R,D]_\sigma^3x_{[R,D]}+ \\
+                 & +[R,D]_\sigma^2x_{[R,D]}+[R,D]_\sigma x_{[R,D]}+x_{[R,D]}
 \end{align*}
 donde $x_{[R,D]}=(0,0,2,0,0,2,0,2)$. Pero como $[R,D]_\sigma$ es 2-idempotente.
 \begin{align*}
-    [R,D]^6_x x=x+3\left([R,D]_\sigma x_{[R,D]}+x_{[R,D]}\right) 
+    [R,D]^6_x x=x+3\left([R,D]_\sigma x_{[R,D]}+x_{[R,D]}\right)
 \end{align*}
 como $3$ multiplicado por cualquier número es múltiplo de $3$
 \begin{align*}
@@ -1147,30 +1175,30 @@ Como anticipamos. Necesitamos un movimiento que intercambie dos esquinas cualesq
 Dado que no nos importa lo que pase con las orientaciones, ni las aristas, nos fijamos sólo en la parte $\sigma$. Para este propósito, el conmutador
 \begin{align*}
     [R,D]_\sigma=\begin{pmatrix}
-        2&3
-    \end{pmatrix}\begin{pmatrix}
-        6 & 7
-    \end{pmatrix}
+                     2 & 3
+                 \end{pmatrix}\begin{pmatrix}
+                                  6 & 7
+                              \end{pmatrix}
 \end{align*}
 no termina de funcionar porque tiene dos 2-ciclos. Y necesitamos uno solo. Con este propósito, vamos a añadir el movimiento $F$. Notar que es el único que comparte piezas con los dos. Sería el movimiento \comillas{que falta}.
 \begin{align*}
     F_\sigma[R,D]_\sigma=\begin{pmatrix}
-        1&2&7&6
-    \end{pmatrix}\begin{pmatrix}
-        3&8
-    \end{pmatrix}\begin{pmatrix}
-        6 & 7
-    \end{pmatrix}=\begin{pmatrix}
-        1&2&7
-    \end{pmatrix}\begin{pmatrix}
-        3&8
-    \end{pmatrix}
+                             1 & 2 & 7 & 6
+                         \end{pmatrix}\begin{pmatrix}
+                                          3 & 8
+                                      \end{pmatrix}\begin{pmatrix}
+                                                       6 & 7
+                                                   \end{pmatrix}=\begin{pmatrix}
+                                                                     1 & 2 & 7
+                                                                 \end{pmatrix}\begin{pmatrix}
+                                                                                  3 & 8
+                                                                              \end{pmatrix}
 \end{align*}
 y esto ya es suficiente. Porque vemos que si potenciamos a la $3$ el 2-ciclo se mantiene, y el 3-ciclo se vuelve la identidad.
 \begin{align*}
     \left(F_\sigma[R,D]_\sigma\right)^3=\begin{pmatrix}
-        3&8
-    \end{pmatrix}
+                                            3 & 8
+                                        \end{pmatrix}
 \end{align*}
 Ahora sabemos como permutar dos esquinas concretas. Para permutar dos esquinas cualesquiera, podríamos armar otros movimientos con diferentes conmutadores. Sin embargo hay una variante mas sencilla (al menos con menos cuentas).
 
@@ -1180,39 +1208,39 @@ Encontramos un movimiento que lleve dos esquinas cualesquiera a las esquinas $3,
 \end{propiedad}
 \begin{proof}
     Sea $(\sigma,\tau,x,y)$ un estado en el cual $\sigma(e_1)=i$ y $\sigma(e_2)=j$.
-    
+
     El caso mas simple es si $i=1,2,3,4$ y $j=5,6,7,8$ (cualquiera de ellos). Porque
     \begin{align*}
-        i=1\implies U^{1-3}_\sigma(\sigma)(e_1)&=3\\
-        i=2\implies U^{2-3}_\sigma(\sigma)(e_1)&=3\\
-        i=3\implies U^{3-3}_\sigma(\sigma)(e_1)&=3\\
-        i=4\implies U^{4-3}_\sigma(\sigma)(e_1)&=3
+        i=1\implies U^{1-3}_\sigma(\sigma)(e_1) & =3 \\
+        i=2\implies U^{2-3}_\sigma(\sigma)(e_1) & =3 \\
+        i=3\implies U^{3-3}_\sigma(\sigma)(e_1) & =3 \\
+        i=4\implies U^{4-3}_\sigma(\sigma)(e_1) & =3
     \end{align*}
     es decir $U_\sigma^{i-3}(\sigma)(e_1)=3$
     \begin{align*}
-        j=5\implies D^{4-5}_\sigma(\sigma)(e_2)&=8\\
-        j=6\implies D^{4-6}_\sigma(\sigma)(e_2)&=8\\
-        j=7\implies D^{4-7}_\sigma(\sigma)(e_2)&=8\\
-        j=8\implies D^{4-8}_\sigma(\sigma)(e_2)&=8
+        j=5\implies D^{4-5}_\sigma(\sigma)(e_2) & =8 \\
+        j=6\implies D^{4-6}_\sigma(\sigma)(e_2) & =8 \\
+        j=7\implies D^{4-7}_\sigma(\sigma)(e_2) & =8 \\
+        j=8\implies D^{4-8}_\sigma(\sigma)(e_2) & =8
     \end{align*}
     es decir $D_\sigma^{4-j}(\sigma)(e_2)=8$ y como son ciclos disjuntos, no se perturban entre ellos.
     \begin{align*}
-        U_\sigma^{i-3}D^{4-j}_\sigma(\sigma)(e_1)=3\\
+        U_\sigma^{i-3}D^{4-j}_\sigma(\sigma)(e_1)=3 \\
         U_\sigma^{i-3}D^{4-j}_\sigma(\sigma)(e_2)=8
     \end{align*}
     Los movimientos que buscamos son entonces $U^{i-3}D^{4-j}$.
 
     En el caso $i=1,2,3,4$ y $j=1,2,3,4$ distinto de $i$, vemos que siempre hay un movimiento que mueve $j$ a $5,6,7,8$. Sin pérdida de generalidad asumimos $i<j$
     \begin{align*}
-        i=1, j=2&\implies R^{-1}_\sigma(\sigma)(e_2)=7\\
-        i=1,j=3&\implies R_{\sigma}(\sigma)(e_2)=8\\
-        i=1,j=4&\implies B_\sigma(\sigma)(e_2)=5\\
-        i=2,j=3&\implies B_\sigma^{-1}(\sigma)(e_2)=8\\
-        i=2,j=4&\implies B_\sigma(\sigma)(e_2)=5\\
-        i=3,j=4&\implies L^{-1}_\sigma(\sigma)(e_2)=5
+        i=1, j=2 & \implies R^{-1}_\sigma(\sigma)(e_2)=7 \\
+        i=1,j=3  & \implies R_{\sigma}(\sigma)(e_2)=8    \\
+        i=1,j=4  & \implies B_\sigma(\sigma)(e_2)=5      \\
+        i=2,j=3  & \implies B_\sigma^{-1}(\sigma)(e_2)=8 \\
+        i=2,j=4  & \implies B_\sigma(\sigma)(e_2)=5      \\
+        i=3,j=4  & \implies L^{-1}_\sigma(\sigma)(e_2)=5
     \end{align*}
     y en todos los casos no se modifica $i$ en con el movimiento. El caso de $i,j=1,2,3,4$ se resuelve de manera similar.
-    
+
     Componiendo con lo que teníamos antes, queda demostrado.
 \end{proof}
 \begin{corolario}
@@ -1229,8 +1257,8 @@ Llamamos $T_{ij}$ al movimiento que lleva las esquinas $i,j$ a las esquinas $3,8
     M_{1}^{ij}:=T_{ij}^{-1} \circ (F[R,D])^3\circ T_{ij}
 \end{align*}
 Pensando en su parte $\sigma$, las esquinas que no sean $i,j$ no terminan en $3,8$. De modo que conmutan con el movimiento del medio, que es el 2-ciclo $\begin{pmatrix}
-    3&8
-\end{pmatrix}$. Y con la inversión terminan en su posición original.
+        3 & 8
+    \end{pmatrix}$. Y con la inversión terminan en su posición original.
 
 Por otro lado la esquina $i$ pasa a $3$ con $T_{ij}$ luego pasa a $8$ con el movimiento $(F[R,D])^3$ y el movimiento $T_{ij}^{-1}$ lleva la esquina $8$ a $j$ de nuevo. Moviendo $i\to j$. Y con $j$ ocurre al revés.
 
@@ -1238,10 +1266,10 @@ Por otro lado la esquina $i$ pasa a $3$ con $T_{ij}$ luego pasa a $8$ con el mov
 Necesitamos ahora movimientos que respeten la posición de las esquinas y cambien su orientación. Una manera de construir esto es usando la idempotencia de los ciclos. Por ejemplo, tomando
 \begin{align*}
     (RD^{-1})_\sigma=\begin{pmatrix}
-        2&3&8
-    \end{pmatrix}
+                         2 & 3 & 8
+                     \end{pmatrix}
     \begin{pmatrix}
-        5& 7 &6
+        5 & 7 & 6
     \end{pmatrix}
 \end{align*}
 como son 3-ciclos, la tercera potencia será la identidad. Y las orientaciones:
@@ -1254,12 +1282,12 @@ hacemos las cuentas
 \end{align*}
 que no cambia solo dos como queremos. Pero podemos componer otros movimientos de este tipo (potencias cúbicas de 3-ciclos). El conveniente en este caso es el inverso
 \begin{align*}
-    (R^{-1}D)_\sigma&=\begin{pmatrix}
-        2& 7 & 3
-    \end{pmatrix}\begin{pmatrix}
-        5&6&8
-    \end{pmatrix}\implies (R^{-1}D)_\sigma^3=1\\
-    (R^{-1}D)_x^{3}&=(R^{-1}D)^3_\sigma x+(R^{-1}D)^2_\sigma x_R+(R^{-1}D)_\sigma x_R+x_R
+    (R^{-1}D)_\sigma & =\begin{pmatrix}
+                            2 & 7 & 3
+                        \end{pmatrix}\begin{pmatrix}
+                                         5 & 6 & 8
+                                     \end{pmatrix}\implies (R^{-1}D)_\sigma^3=1              \\
+    (R^{-1}D)_x^{3}  & =(R^{-1}D)^3_\sigma x+(R^{-1}D)^2_\sigma x_R+(R^{-1}D)_\sigma x_R+x_R
 \end{align*}
 y haciendo las cuentas
 \begin{align*}
@@ -1279,9 +1307,9 @@ Como ahora vamos a trabajar con las aristas, lo primero es notar que hay un movi
 
 Esto complica la notación, porque si en el cubo físico se realiza uno de estos movimientos $M_R$, todos los movimientos que realicemos después deberán ser reemplazados en la notación por su equivalente visto desde la cara original.
 \begin{align*}
-    U\to F\\
-    D\to B\\
-    F\to D\\
+    U\to F \\
+    D\to B \\
+    F\to D \\
     B\to U
 \end{align*}
 Por esta razón, movimientos muy fáciles de realizar parecen notacionalmente muy complicados. Pero este movimiento $M_R$ es vital, dado que al no tocar esquinas, en $\sigma$ conmuta con todos los movimientos. Así que nos atenemos a las consecuencias.
@@ -1300,10 +1328,10 @@ y $M_R$ tampoco cambia orientaciones de esquinas, de modo que también conmuta c
 \end{align*}
 Pero veamos qué le hace a las aristas
 \begin{align*}
-    U^2M_R^{-1}U^2M_R&\equiv U^2L^{-1}RF^2LR^{-1}\\
-    (U^2M_R^{-1}U^2M_R)_\tau&=\begin{pmatrix}
-        1 & 3 & 11
-    \end{pmatrix}
+    U^2M_R^{-1}U^2M_R        & \equiv U^2L^{-1}RF^2LR^{-1} \\
+    (U^2M_R^{-1}U^2M_R)_\tau & =\begin{pmatrix}
+                                    1 & 3 & 11
+                                \end{pmatrix}
 \end{align*}
 Así que hace lo que necesitamos. Pero como con esquinas, necesitamos un movimiento que lleve 3 aristas cualesquiera a $1,3,11$
 \begin{propiedad}
@@ -1312,38 +1340,38 @@ Así que hace lo que necesitamos. Pero como con esquinas, necesitamos un movimie
 \begin{proof}
     Sea $(\sigma,\tau,x,y)$ una configuración inicial con $\tau(e_1)=i$, $\tau(e_2)=j$ y $\tau(e_3)=k$. La estrategia es que si las tres aristas están en la misma cara paralela a la cara $M_R$. Digamos $i,j,k=2,6,7,10$ en cualquier orden.
     \begin{align*}
-        i=2 &\implies U^{-1}_\tau(\tau)(e_1)=1\\
-        i=6 &\implies R_\tau U^{-1}_\tau(\tau)R^{-1}_\tau (e_1)=1\\
-        i=7 &\implies R^{-1}_\tau U^{-1}_\tau R_\tau(\tau) (e_1)=1\\
-        i=10 &\implies R^2_\tau U^{-1}_\tau R^{2}_\tau  (\tau)(e_1)=1
+        i=2  & \implies U^{-1}_\tau(\tau)(e_1)=1                       \\
+        i=6  & \implies R_\tau U^{-1}_\tau(\tau)R^{-1}_\tau (e_1)=1    \\
+        i=7  & \implies R^{-1}_\tau U^{-1}_\tau R_\tau(\tau) (e_1)=1   \\
+        i=10 & \implies R^2_\tau U^{-1}_\tau R^{2}_\tau  (\tau)(e_1)=1
     \end{align*}
     y no modifican la ubicación de $j,k$. Llamamos $(\sigma',\tau',x',y')$ al estado alcanzado tras este movimiento.
     \begin{align*}
-        j=2&\implies R_\tau F^{-1}_\tau R^{-1}_\tau(\tau')(e_2)=3\\
-        j=6 &\implies R_\tau^2 F^{-1}_\tau R^{2}_\tau(\tau')(e_2)=3\\
-        j=7 &\implies F^{-1}_\tau (\tau')(e_2)=3\\
-        j=10&\implies R^{-1}_\tau F^{-1}_\tau R_\tau (\tau')(e_2)=3
+        j=2  & \implies R_\tau F^{-1}_\tau R^{-1}_\tau(\tau')(e_2)=3  \\
+        j=6  & \implies R_\tau^2 F^{-1}_\tau R^{2}_\tau(\tau')(e_2)=3 \\
+        j=7  & \implies F^{-1}_\tau (\tau')(e_2)=3                    \\
+        j=10 & \implies R^{-1}_\tau F^{-1}_\tau R_\tau (\tau')(e_2)=3
     \end{align*}
     y no modifican la ubicación de $k$ ni $i=1$. Llamamos $(\sigma'',\tau'',x'',y'')$ al estado alcanzado tras este movimiento.
     \begin{align*}
-        k=2&\implies R^2_\tau D^{-1}_\tau R^2_\tau(\tau'')(e_3)=11\\
-        k=6&\implies R^{-1}_\tau D^{-1}_\tau R_\tau (\tau'')(e_3)=11\\
-        k=7&\implies R_\tau D^{-1}_\tau R_\tau^{-1} (\tau'')(e_3)=11\\
-        k=10 &\implies D^{-1}_\tau (\tau'')(e_3)=11
+        k=2  & \implies R^2_\tau D^{-1}_\tau R^2_\tau(\tau'')(e_3)=11   \\
+        k=6  & \implies R^{-1}_\tau D^{-1}_\tau R_\tau (\tau'')(e_3)=11 \\
+        k=7  & \implies R_\tau D^{-1}_\tau R_\tau^{-1} (\tau'')(e_3)=11 \\
+        k=10 & \implies D^{-1}_\tau (\tau'')(e_3)=11
     \end{align*}
     y no modifican la ubicación de $i=1$ ni $j=3$. Y el estado final tiene la propiedad que buscamos.
 
     Ahora, si las tres aristas no se ubican en $2,6,7,10$. Podemos simplificar cualquier estado a este caso. Digamos que el estado inicial es $(\sigma,\tau,x,y)$. Sea $\tau(e)=i$ cualquier arista que no sea $6,7,10$.
     \begin{align*}
-        i=1&\implies U_\tau(\tau)(e)=2\\
-        i=2&\implies Id(\tau)(e)=2\\
-        i=3&\implies U^{-1}_\tau(\tau)(e)=2\\
-        i=4&\implies U^2_\tau(\tau)(e)=2\\
-        i=5&\implies U^2_\tau L_\tau (\tau)(e)=2\\
-        i=8&\implies U^2_\tau L^{-1}_\tau(\tau)(e)=2\\
-        i=9&\implies U^2_\tau D^{-1}_\tau L^{2}_\tau D_\tau(\tau)(e)=2\\
-        i=11&\implies U^2_\tau D_\tau L^{2}_\tau D^{-1}_\tau(\tau)(e)=2\\
-        i=12&\implies U^2_\tau L^{2}_\tau(\tau)(e)=2
+        i=1  & \implies U_\tau(\tau)(e)=2                                 \\
+        i=2  & \implies Id(\tau)(e)=2                                     \\
+        i=3  & \implies U^{-1}_\tau(\tau)(e)=2                            \\
+        i=4  & \implies U^2_\tau(\tau)(e)=2                               \\
+        i=5  & \implies U^2_\tau L_\tau (\tau)(e)=2                       \\
+        i=8  & \implies U^2_\tau L^{-1}_\tau(\tau)(e)=2                   \\
+        i=9  & \implies U^2_\tau D^{-1}_\tau L^{2}_\tau D_\tau(\tau)(e)=2 \\
+        i=11 & \implies U^2_\tau D_\tau L^{2}_\tau D^{-1}_\tau(\tau)(e)=2 \\
+        i=12 & \implies U^2_\tau L^{2}_\tau(\tau)(e)=2
     \end{align*}
     y no modifican la ubicación de las aristas $6,7,10$.
 
@@ -1374,29 +1402,29 @@ Siguiendo la idea del movimiento $M_2$ lo que hacemos es considerar el movimient
 
 Sin embargo usando que todos los movimientos conmutan con $M_R$ en $\sigma$. Necesitamos al menos $4$ aplicaciones para llegar a la identidad. Veremos que con $4$ alcanzarán
 \begin{align*}
-    (UM_R)^4&\equiv (ULR^{-1})(BLR^{-1})(DLR^{-1})(FLR^{-1})\\
-    (UM_R)^4_\tau&=Id\\
-    (UM_R)^4_\sigma&=(U^4M_R^4)_\sigma=Id\\
-    (UM_R)^4_x&=(U^4M_R^4)_x=Id
+    (UM_R)^4        & \equiv (ULR^{-1})(BLR^{-1})(DLR^{-1})(FLR^{-1}) \\
+    (UM_R)^4_\tau   & =Id                                             \\
+    (UM_R)^4_\sigma & =(U^4M_R^4)_\sigma=Id                           \\
+    (UM_R)^4_x      & =(U^4M_R^4)_x=Id
 \end{align*}
 y las orientaciones de las aristas
 \begin{align*}
-    (UM_R)^4_y&=(UM_R)^4_\tau y+(ULR^{-1})_\tau(BLR^{-1})_\tau(DLR^{-1})_\tau y_F+(ULR^{-1})_\tau y_B\\
-    (UM_R)^4_y&=y+(0,1,1,1,0,0,0,0,0,0,1,0)+(1,1,1,0,0,0,0,0,1,0,0,0)=\\
-    &=y+(1,0,0,1,0,0,0,0,0,1,0,1,0)
+    (UM_R)^4_y & =(UM_R)^4_\tau y+(ULR^{-1})_\tau(BLR^{-1})_\tau(DLR^{-1})_\tau y_F+(ULR^{-1})_\tau y_B \\
+    (UM_R)^4_y & =y+(0,1,1,1,0,0,0,0,0,0,1,0)+(1,1,1,0,0,0,0,0,1,0,0,0)=                                \\
+               & =y+(1,0,0,1,0,0,0,0,0,1,0,1,0)
 \end{align*}
 y consideramos a su vez
 \begin{align*}
-    (U^{-1}M_R)^4&\equiv (U^{-1}LR^{-1})(B^{-1}LR^{-1})(D^{-1}LR^{-1})(F^{-1}LR^{-1})\\
-    (U^{-1}M_R)^4_\tau&=Id\\
-    (UM_R)^4_\sigma&=(U^4M_R^4)_\sigma=Id\\
-    (UM_R)^4_x&=(U^4M_R^4)_x=Id
+    (U^{-1}M_R)^4      & \equiv (U^{-1}LR^{-1})(B^{-1}LR^{-1})(D^{-1}LR^{-1})(F^{-1}LR^{-1}) \\
+    (U^{-1}M_R)^4_\tau & =Id                                                                 \\
+    (UM_R)^4_\sigma    & =(U^4M_R^4)_\sigma=Id                                               \\
+    (UM_R)^4_x         & =(U^4M_R^4)_x=Id
 \end{align*}
 y las orientaciones de las aristas
 \begin{align*}
-    (U^{-1}M_R)^4_y&=(U^{-1}M_R)^4_\tau y+(U^{-1}LR^{-1})_\tau(B^{-1}LR^{-1})_\tau(D^{-1}LR^{-1})_\tau y_F+(U^{-1}LR^{-1})_\tau y_B\\
-    (U^{-1}M_R)^4_y&=y+(0,1,1,1,0,0,0,0,0,0,1,0)+(1,0,1,1,0,0,0,0,1,0,0,0)=\\
-    &=y+(1,1,0,0,0,0,0,0,1,0,1,0)
+    (U^{-1}M_R)^4_y & =(U^{-1}M_R)^4_\tau y+(U^{-1}LR^{-1})_\tau(B^{-1}LR^{-1})_\tau(D^{-1}LR^{-1})_\tau y_F+(U^{-1}LR^{-1})_\tau y_B \\
+    (U^{-1}M_R)^4_y & =y+(0,1,1,1,0,0,0,0,0,0,1,0)+(1,0,1,1,0,0,0,0,1,0,0,0)=                                                         \\
+                    & =y+(1,1,0,0,0,0,0,0,1,0,1,0)
 \end{align*}
 componiendo tenemos
 \begin{align*}
@@ -1427,15 +1455,15 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
     con $P$ definido como en \eqref{eq:contencion}
 \end{teorema}
 \begin{proof}
-    Como se anticipó. La estrategia consiste en reducir un estado de $P$ al estado resuelto mediante los movimientos que fuimos fabricando.
-    
+    Como se anticipó. La estrategia consiste en reducir un estado de $P$ al estado resuelto mediante los movimientos que fuimos fabricando. Para mayor generalidad, reduciremos un elemento genérico $(\sigma,\tau,x,y)\in X$, y al final veremos qué pasa si está en $P$.
+
     \textbf{Paso 1.}
-    
-    Sea $(\sigma_1,\tau_1,x_1,y_1)\in P$. El movimiento $M^{ij}_1$ intercambia dos esquinas cualesquiera. Es decir que
+
+    Sea $(\sigma_1,\tau_1,x_1,y_1)\in X$. El movimiento $M^{ij}_1$ intercambia dos esquinas cualesquiera. Es decir que
     \begin{align*}
         M_1^{ij}\sigma=\begin{pmatrix}
-            i& j
-        \end{pmatrix}
+                           i & j
+                       \end{pmatrix}
     \end{align*}
     Como los 2-ciclos son generadores de $S_8$, componiendo movimientos tipo $M_1$ puede construirse un $M_1^{-1}$ tal que
     \begin{align*}
@@ -1443,59 +1471,62 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
     \end{align*}
     La inversa de dicho movimiento $M_1$, aplicado al estado inicial, verifica
     \begin{align*}
-        M_1(\sigma_1,\tau_1,x_1,y_1)=(1,\tau_2,x_2,y_2)\in P
+        M_1(\sigma_1,\tau_1,x_1,y_1)=(1,\tau_2,x_2,y_2)
     \end{align*}
-    perteneciendo a $P$ porque los movimientos de cara mantienen las propiedades.
-    
-    Hasta aquí, esto se puede hacer para cualquier estado. No sólo los de $P$
+    conservando la relación entre los signos de $\sigma,\tau$, y la suma de sus orientaciones. Porque los movimientos de cara mantienen las propiedades.
+
+    Hasta aquí, esto se puede hacer para cualquier estado sin usar ninguna de las propiedades.
     \textbf{Paso 2.}
-    
+
     El movimiento $M_2^{ij}$ cambia la orientación de dos aristas sin modificar la posición de ninguna. Es decir
     \begin{align*}
-        M_2^{ij}\sigma&=1\\
-        (M_2^{ij})_x(x)&=x+(x_1=0,\dots,x_i=1,\dots,x_j=2,\dots,x_n=0)
+        M_2^{ij}\sigma  & =1                                             \\
+        (M_2^{ij})_x(x) & =x+(x_1=0,\dots,x_i=1,\dots,x_j=2,\dots,x_n=0)
     \end{align*}
     Elegimos una esquina \comillas{pivote}. Por ejemplo la $8$. Cualquier esquina $i$ de $(1,\tau_2,x_2,y_2)$ que no sea la $8$ puede orientarse aplicando $M_2^{i,8}$ una o dos veces. Esto se hace para todas las esquinas. Tras la composición queda un movimiento $M_2$ que aplicado al estado actual cumple
     \begin{align*}
         M_2(1,\tau_2,x_2,y_2)=(1,\tau_3,(0,\dots,x_8'),y_3)
     \end{align*}
-    Ahora empiezan a entrar en juego las propiedades de $P$. Dado que $(1,\tau_2,x_2,y_2)\in P$, y los movimientos de cara conservan las propiedades de $P$. Tras la transformación $(0,\dots,x_8')$ debe tener suma $\sum_{i=1}^8x_i'\equiv 0\mod 3$. Es decir
+    Ahora empiezan a entrar en juego las propiedades. El valor de $x_8'$ está determinado por la orientación incial del estado. Es decir, dado que los movimientos de cara preservan la suma del vector de orientaciones,
     \begin{align*}
-        x_8'=0
+        0,1,2=\sum_{i=1}^8 (x_1)_i\equiv \sum_{i=1}^8 (x_2)_i=x_8'
     \end{align*}
     quedando
     \begin{align*}
-        M_2(1,\tau_2,x_2,y_2)=(1,\tau_3,\mathbf{0},y_3)\in P
+        M_2(1,\tau_2,x_2,y_2)=(1,\tau_3,(0,\dots,x_8'=0,1,2),y_3)\in P
     \end{align*}
     \textbf{Paso 3.}
 
     El movimiento $M_3^{ijk}$ intercambia $3$ aristas cualesquiera sin tocar las esquinas. Es decir
     \begin{align*}
-        M_3^{ijk}\sigma=1\\
-        (M_3^{ijk})_x=1\\
+        M_3^{ijk}\sigma=1 \\
+        (M_3^{ijk})_x=1   \\
         M_3^{ijk}\tau=\begin{pmatrix}
-            i&j &k
-        \end{pmatrix}
+                          i & j & k
+                      \end{pmatrix}
     \end{align*}
-    En general los 3-ciclos no generan cualquier permutación. Pero sí generan a las permutaciones de signo positivo. Y por la propiedad de $P$, $\sgn{\tau_3}=\sgn{1}=1$. Es decir que componiendo movimientos tipo $M_3^{ijk}$ podemos obtener un movimiento $M_3^{-1}$ tal que
+    En general los 3-ciclos no generan cualquier permutación. Pero sí generan a las permutaciones de signo positivo. Y el signo de $\tau_3$ está determinado por la relación de signos inicial. Si $\frac{\sgn{\sigma_1}}{\sgn{\tau_1}}=1$, entonces $1=\sgn{1}=\sgn{\tau_3}$. Si $\frac{\sgn{\sigma_1}}{\sgn{\tau_1}}=-1$, entonces $-1=-\sgn{1}=\sgn{\tau_3}$.
+
+    Añadimos una permutación de aristas $\begin{pmatrix}1 & 2\end{pmatrix}$ para que el signo de $\tau_3$ sea positivo. $\tau_3=S_\tau S_\tau \tau_3$
     \begin{align*}
-        M_3^{-1}\sigma&=1\\
-        (M_3^{-1})_x&=1\\
-        M_3^{-1}\tau&=\tau_3
+        M_3^{-1}\sigma & =1                   \\
+        (M_3^{-1})_x   & =1                   \\
+        M_3^{-1}\tau   & =S_\tau \circ \tau_3
     \end{align*}
-    invertir conserva las propiedades, de modo que
+    con $S_\tau =\begin{pmatrix} 1&2 \end{pmatrix}^{0,1}$. Aplicando $\left( S^{-1}\circ M_3^{-1}\right)^{-1}=M_3 \circ S$ al estado actual, obtenemos
     \begin{align*}
-        M_3(1,\tau_3,\mathbf{0},y_3)=(1,1,\mathbf{0},y_4)\in P
+        M_3\circ S(1,\tau_3,(0,\dots,x_8'=0,1,2),y_3)=(1,1,(0,\dots,x_8'=0,1,2),y_4) \\
+        M_3(1,\tau_3,)
     \end{align*}
 
     \textbf{Paso 4.}
 
     El movimiento $M_4^{ij}$ permuta dos aristas sin tocar las otras aristas, ni las esquinas.
     \begin{align*}
-        M_4^{ij}\sigma&=1\\
-        (M_4^{ij})_x&=1\\
-        M_4^{ij}\tau&=1\\
-        (M_4^{ij})_y(y)&=y+(y_1=0,\dots,y_i=1,\dots,y_j=1,\dots,y_n=0)
+        M_4^{ij}\sigma  & =1                                             \\
+        (M_4^{ij})_x    & =1                                             \\
+        M_4^{ij}\tau    & =1                                             \\
+        (M_4^{ij})_y(y) & =y+(y_1=0,\dots,y_i=1,\dots,y_j=1,\dots,y_n=0)
     \end{align*}
     Tomamos nuevamente una arista pivote. Digamos la $12$. Cada arista $i\neq 12$, con $(y_4)_i\neq 0$ puede reorientarse mediante el movimiento $M_4^{i,12}$. Tras una composición de a lo sumo $11$ movimientos, creamos un $M_4$ que cumple
     \begin{align*}
@@ -1533,17 +1564,17 @@ Esto nos dice inmediatamente que el número de movimientos válidos del cubo de 
 \end{align*}
 Pensemos ahora en los casos que quedan afuera. Sea $(\sigma,\tau,x,y)\in X$. Existen las posibilidades
 \begin{align*}
-    \sgn{\sigma}=\pm \sgn{\tau}\\
-    \sum_{i=1}^8x_i\equiv 0,1,2\mod 3\\
+    \sgn{\sigma}=\pm \sgn{\tau}       \\
+    \sum_{i=1}^8x_i\equiv 0,1,2\mod 3 \\
     \sum_{i=1}^{12}y_i\not\equiv 0,1\mod 2
 \end{align*}
 mediante $\begin{pmatrix}
-    1& 2
-\end{pmatrix}$ sobre $\sigma$ de ser necesario, se puede hacer que los signos sean iguales. Mediante sumar $(0,\dots,0,+1/+2)$ sobre $x$ de ser necesario, se puede hacer que la suma sea $0\mod 3$. Y mediante sumar $(0,\dots,0/+1)$ sobre $y$ de ser necesario, se puede hacer que la suma sea $0\mod 2$.
+        1 & 2
+    \end{pmatrix}$ sobre $\sigma$ de ser necesario, se puede hacer que los signos sean iguales. Mediante sumar $(0,\dots,0,+1/+2)$ sobre $x$ de ser necesario, se puede hacer que la suma sea $0\mod 3$. Y mediante sumar $(0,\dots,0/+1)$ sobre $y$ de ser necesario, se puede hacer que la suma sea $0\mod 2$.
 
 Llamamos $T$ al movimiento que hace esto. Y notamos que es invertible. Entonces
 \begin{align*}
-    T(\sigma,\tau,x,y)=(\sigma',\tau',x',y')\in P=\mathcal{O}(1,1,\mathbf{0},\mathbf{0})\\
+    T(\sigma,\tau,x,y)=(\sigma',\tau',x',y')\in P=\mathcal{O}(1,1,\mathbf{0},\mathbf{0}) \\
     \implies T^{-1}\circ T(\sigma,\tau,x,y)=T^{-1}M\cdot (1,1,0,0)
 \end{align*}
 \end{document}
