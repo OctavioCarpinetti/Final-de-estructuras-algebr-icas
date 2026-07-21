@@ -113,7 +113,7 @@ Hagamos un ejemplo de esto. Digamos que tomamos el cubo de la posición inicial,
 \centering
 \begin{tikzpicture}[scale=1]
 \def\s{0.9} % lado de cada cuadrado
-\begin{scope}shift={(0,0)}
+\begin{scope}[shift={(0,0)}]
 % Cuadrícula central 3x3
 \foreach \x in {0,1,2}
   \foreach \y in {0,1,2}
@@ -332,7 +332,7 @@ se le puede aplicar la rotación sobre la cara \r{} y ver qué configuración qu
 \centering
 \begin{tikzpicture}[scale=1]
 \def\s{0.9} % lado de cada cuadrado
-\begin{scope}shift={(0,0)}
+\begin{scope}[shift={(0,0)}]
 % Cuadrícula central 3x3
 \foreach \x in {0,1,2}
   \foreach \y in {0,1,2}
@@ -1310,9 +1310,59 @@ Así que hace lo que necesitamos. Pero como con esquinas, necesitamos un movimie
     Existe un movimiento que lleva tres aristas cualesquiera a la posición de las aristas $1,3,11$.
 \end{propiedad}
 \begin{proof}
-    Sea $(\sigma,\tau,x,y)$ una configuración inicial con $\tau(e_1)=i$, $\tau(e_2)=j$ y $\tau(e_3)=k$. La estrategia es que si las tres aristas están en la misma cara paralela a la cara $M_R$. Digamos $i,j,k=7,2,6,10$ en cualquier orden.
+    Sea $(\sigma,\tau,x,y)$ una configuración inicial con $\tau(e_1)=i$, $\tau(e_2)=j$ y $\tau(e_3)=k$. La estrategia es que si las tres aristas están en la misma cara paralela a la cara $M_R$. Digamos $i,j,k=2,6,7,10$ en cualquier orden.
+    \begin{align*}
+        i=2 &\implies U^{-1}_\tau(\tau)(e_1)=1\\
+        i=6 &\implies R_\tau U^{-1}_\tau(\tau)R^{-1}_\tau (e_1)=1\\
+        i=7 &\implies R^{-1}_\tau U^{-1}_\tau R_\tau(\tau) (e_1)=1\\
+        i=10 &\implies R^2_\tau U^{-1}_\tau R^{2}_\tau  (\tau)(e_1)=1
+    \end{align*}
+    y no modifican la ubicación de $j,k$. Llamamos $(\sigma',\tau',x',y')$ al estado alcanzado tras este movimiento.
+    \begin{align*}
+        j=2&\implies R_\tau F^{-1}_\tau R^{-1}_\tau(\tau')(e_2)=3\\
+        j=6 &\implies R_\tau^2 F^{-1}_\tau R^{2}_\tau(\tau')(e_2)=3\\
+        j=7 &\implies F^{-1}_\tau (\tau')(e_2)=3\\
+        j=10&\implies R^{-1}_\tau F^{-1}_\tau R_\tau (\tau')(e_2)=3
+    \end{align*}
+    y no modifican la ubicación de $k$ ni $i=1$. Llamamos $(\sigma'',\tau'',x'',y'')$ al estado alcanzado tras este movimiento.
+    \begin{align*}
+        k=2&\implies R^2_\tau D^{-1}_\tau R^2_\tau(\tau'')(e_3)=11\\
+        k=6&\implies R^{-1}_\tau D^{-1}_\tau R_\tau (\tau'')(e_3)=11\\
+        k=7&\implies R_\tau D^{-1}_\tau R_\tau^{-1} (\tau'')(e_3)=11\\
+        k=10 &\implies D^{-1}_\tau (\tau'')(e_3)=11
+    \end{align*}
+    y no modifican la ubicación de $i=1$ ni $j=3$. Y el estado final tiene la propiedad que buscamos.
 
-    Los otros casos se pueden reducir a este.
+    Ahora, si las tres aristas no se ubican en $2,6,7,10$. Podemos simplificar cualquier estado a este caso. Digamos que el estado inicial es $(\sigma,\tau,x,y)$. Sea $\tau(e)=i$ cualquier arista que no sea $6,7,10$.
+    \begin{align*}
+        i=1&\implies U_\tau(\tau)(e)=2\\
+        i=2&\implies Id(\tau)(e)=2\\
+        i=3&\implies U^{-1}_\tau(\tau)(e)=2\\
+        i=4&\implies U^2_\tau(\tau)(e)=2\\
+        i=5&\implies U^2_\tau L_\tau (\tau)(e)=2\\
+        i=8&\implies U^2_\tau L^{-1}_\tau(\tau)(e)=2\\
+        i=9&\implies U^2_\tau D^{-1}_\tau L^{2}_\tau D_\tau(\tau)(e)=2\\
+        i=11&\implies U^2_\tau D_\tau L^{2}_\tau D^{-1}_\tau(\tau)(e)=2\\
+        i=12&\implies U^2_\tau L^{2}_\tau(\tau)(e)=2
+    \end{align*}
+    y no modifican la ubicación de las aristas $6,7,10$.
+
+    Si $k$ está en $6,10$ no hacemos nada. Si $k=7$ aplicamos $R^{-1}$ para llevarla a $10$. Si no es ninguno de estos, aplicamos el movimiento para llevarla a $2$, y luego aplicamos $R$ para llevarla a $6$. Tras esto $i,j,k\to i',j',k'$ con $k'=6,10$.
+
+    Si $j'$ está en $6,7,10$ no hacemos nada. Sino aplicamos el movimiento anterior para llevarla a $2$ y luego componemos con $R$ para llevarla a $6$ y $k'$ a $7,10$. Tras esto $i,j,k\to i'',j'',k''$ con $j''=6,7,10$ y $k''=6,7,10$.
+
+    Si $i$ está en $6,7,10$ no hacemos nada. Sino aplicamos el movimiento anterior para llevarla a $2$. Tras esto $i,j,k\to i''',j''',k'''$ con $i'''=2,6,7,10$, $j'''=6,7,10$ y $k'''=6,7,10$. Y ya estamos en el caso anterior.
+
+    De este modo, desde cualquier estado se puede llegar a un estado en el cual las aristas $i,j,k$ estén en la posición de las aristas $2,6,7,10$. Y luego se puede llevar a la posición de las aristas $1,3,11$.
+\end{proof}
+\begin{corolario}
+    Existe un movimiento que lleva cualesquiera tres aristas a cualesquiera otras tres aristas.
+\end{corolario}
+\begin{proof}
+    Tomamos un movimiento $S_1$ que lleva las aristas $i,j,k$ a las aristas $1,3,11$ y otro movimiento $S_2$ que lleva las aristas $i',j',k'$ a las aristas $1,3,11$. Entonces el movimiento
+    \begin{align*}
+        S_{(ijk)\to (i'j'k')}:=S_2^{-1}S_1
+    \end{align*}
 \end{proof}
 Llamamos $S_{ijk}$ al movimiento que lleva las aristas $i,j,k$ a $1,3,11$. El movimiento
 \begin{align*}
@@ -1480,5 +1530,20 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
 Esto nos dice inmediatamente que el número de movimientos válidos del cubo de Rubik es
 \begin{align*}
     |\mathcal{O}(1,1,\mathbf{0},\mathbf{0})|=\frac{8!12!\,3^{8}\,2^{12}}{12}\approx 43.25\times 10^{19}
+\end{align*}
+Pensemos ahora en los casos que quedan afuera. Sea $(\sigma,\tau,x,y)\in X$. Existen las posibilidades
+\begin{align*}
+    \sgn{\sigma}=\pm \sgn{\tau}\\
+    \sum_{i=1}^8x_i\equiv 0,1,2\mod 3\\
+    \sum_{i=1}^{12}y_i\not\equiv 0,1\mod 2
+\end{align*}
+mediante $\begin{pmatrix}
+    1& 2
+\end{pmatrix}$ sobre $\sigma$ de ser necesario, se puede hacer que los signos sean iguales. Mediante sumar $(0,\dots,0,+1/+2)$ sobre $x$ de ser necesario, se puede hacer que la suma sea $0\mod 3$. Y mediante sumar $(0,\dots,0/+1)$ sobre $y$ de ser necesario, se puede hacer que la suma sea $0\mod 2$.
+
+Llamamos $T$ al movimiento que hace esto. Y notamos que es invertible. Entonces
+\begin{align*}
+    T(\sigma,\tau,x,y)=(\sigma',\tau',x',y')\in P=\mathcal{O}(1,1,\mathbf{0},\mathbf{0})\\
+    \implies T^{-1}\circ T(\sigma,\tau,x,y)=T^{-1}M\cdot (1,1,0,0)
 \end{align*}
 \end{document}
