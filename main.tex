@@ -1531,19 +1531,4 @@ Esto nos dice inmediatamente que el número de movimientos válidos del cubo de 
 \begin{align*}
     |\mathcal{O}(1,1,\mathbf{0},\mathbf{0})|=\frac{8!12!\,3^{8}\,2^{12}}{12}\approx 43.25\times 10^{19}
 \end{align*}
-Pensemos ahora en los casos que quedan afuera. Sea $(\sigma,\tau,x,y)\in X$. Existen las posibilidades
-\begin{align*}
-    \sgn{\sigma}=\pm \sgn{\tau}\\
-    \sum_{i=1}^8x_i\equiv 0,1,2\mod 3\\
-    \sum_{i=1}^{12}y_i\not\equiv 0,1\mod 2
-\end{align*}
-mediante $\begin{pmatrix}
-    1& 2
-\end{pmatrix}$ sobre $\sigma$ de ser necesario, se puede hacer que los signos sean iguales. Mediante sumar $(0,\dots,0,+1/+2)$ sobre $x$ de ser necesario, se puede hacer que la suma sea $0\mod 3$. Y mediante sumar $(0,\dots,0/+1)$ sobre $y$ de ser necesario, se puede hacer que la suma sea $0\mod 2$.
-
-Llamamos $T$ al movimiento que hace esto. Y notamos que es invertible. Entonces
-\begin{align*}
-    T(\sigma,\tau,x,y)=(\sigma',\tau',x',y')\in P=\mathcal{O}(1,1,\mathbf{0},\mathbf{0})\\
-    \implies T^{-1}\circ T(\sigma,\tau,x,y)=T^{-1}M\cdot (1,1,0,0)
-\end{align*}
 \end{document}
