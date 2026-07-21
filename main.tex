@@ -1441,7 +1441,7 @@ donde $S_{ijk}$ es el movimiento que lleva $i,j$ a $2,4$ y a $k$ la deja igual.
 \subsection{Resumen}
 Listamos los cuatro movimientos que construimos. Vamos a ponerlos en una notación alternativa mas propia del cubo. Con la composición al revés. Esto porque para ejecutar el movimiento, es más sencillo leerlo de izquierda a derecha, que al revés.
 \begin{itemize}
-    \item $M_1^{3,8}=([R,D]F)^3\implies M_1^{ij}=T_{ij\to3,8}([R,D]F)^3T_{ij\to 3,8}^{-1}$
+    \item $M_1^{3,8}=(DRD^{-1}R^{-1}F)^3\implies M_1^{ij}=T_{ij\to3,8}([R,D]F)^3T_{ij\to 3,8}^{-1}$
     \item $M_2^{7,8}=(D^{-1}R)^3(DR^{-1})^3\implies M_2^{ij}=T_{ij\to 7,8}(D^{-1}R)^3(DR^{-1})^3T_{ij\to7,8}^{-1}$
     \item $M_3^{1,3,11}=M_RU^2M_R^{-1}U^2\implies M_3^{ijk}=S_{ijk\to1,3,11}M_RU^2M_R^{-1}U^2S_{ijk\to1,3,11}^{-1}$
     \item $M_4^{24}=(M_RU)^4(M_RU^{-1})^4\implies M_4^{ij}=S_{ijk\to2,4,k}(M_RU)^4(M_RU^{-1})^4S_{ijk\to 2,4,k}^{-1}$
@@ -1458,7 +1458,7 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
 \begin{proof}
     Como se anticipó. La estrategia consiste en reducir un estado de $P$ al estado resuelto mediante los movimientos que fuimos fabricando. Para mayor generalidad, reduciremos un elemento genérico $(\sigma,\tau,x,y)\in X$, y al final veremos qué pasa si está en $P$.
 
-    \textbf{Paso 1.}
+    \noindent\textbf{Paso 1.}
 
     Sea $(\sigma_1,\tau_1,x_1,y_1)\in X$. El movimiento $M^{ij}_1$ intercambia dos esquinas cualesquiera. Es decir que
     \begin{align*}
@@ -1477,7 +1477,8 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
     conservando la relación entre los signos de $\sigma,\tau$, y la suma de sus orientaciones. Porque los movimientos de cara mantienen las propiedades.
 
     Hasta aquí, esto se puede hacer para cualquier estado sin usar ninguna de las propiedades.
-    \textbf{Paso 2.}
+    
+    \noindent\textbf{Paso 2.}
 
     El movimiento $M_2^{ij}$ cambia la orientación de dos aristas sin modificar la posición de ninguna. Es decir
     \begin{align*}
@@ -1498,8 +1499,9 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
     \begin{align*}
         M_2(1,\tau_2,x_2,y_2)=(1,\tau_3,(x_1'\in(0,1,2),0\dots,0),y_3)\in P
     \end{align*}
-    llamamos $x_3=(x_1'\in(0,1,2),0\dots,0),y_3)$
-    \textbf{Paso 3.}
+    llamamos $x_3=(x_1'\in(0,1,2),0\dots,0)$
+
+    \noindent\textbf{Paso 3.}
 
     El movimiento $M_3^{ijk}$ intercambia $3$ aristas cualesquiera sin tocar las esquinas. Es decir
     \begin{align*}
@@ -1558,7 +1560,7 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
     \end{align*}
     con $\tau_4=1$ o $\tau_4=\begin{pmatrix} 1 & 2\end{pmatrix}$. Y las propiedades se conservan por ser movimientos de caras.
 
-    \textbf{Paso 4.}
+    \noindent\textbf{Paso 4.}
 
     El movimiento $M_4^{ij}$ permuta dos aristas sin tocar las otras aristas, ni las esquinas.
     \begin{align*}
@@ -1579,7 +1581,9 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
     \begin{align*}
         M_4(1,\tau_4,x_3,y_4)=(1,\tau_4,x_3,y_5)
     \end{align*}
-    \textbf{Paso 5.}
+    
+    \noindent\textbf{Paso 5.}
+    
     Uniendo los cuatro movimientos tenemos que existen $M_1,M_2,M_3,M_4\in P$ tales que
     \begin{align*}
         M_4M_3M_2M_1(\sigma_1,\tau_1,x_1,y_1)=(1,\tau_4,x_3,y_5)
