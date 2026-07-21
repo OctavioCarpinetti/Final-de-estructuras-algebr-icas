@@ -9,7 +9,8 @@ hyperref,
 physics,
 tikz-cd,
 mathtools,
-amsthm
+amsthm,
+rubikcube
 }
 
 \newtheorem{lema}{Lema}[section]
@@ -1483,18 +1484,21 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
         M_2^{ij}\sigma  & =1                                             \\
         (M_2^{ij})_x(x) & =x+(x_1=0,\dots,x_i=1,\dots,x_j=2,\dots,x_n=0)
     \end{align*}
-    Elegimos una esquina \comillas{pivote}. Por ejemplo la $8$. Cualquier esquina $i$ de $(1,\tau_2,x_2,y_2)$ que no sea la $8$ puede orientarse aplicando $M_2^{i,8}$ una o dos veces. Esto se hace para todas las esquinas. Tras la composición queda un movimiento $M_2$ que aplicado al estado actual cumple
+    Elegimos una esquina \comillas{pivote}. Por ejemplo la $1$. Cualquier esquina $i$ de $(1,\tau_2,x_2,y_2)$ que no sea la $1$ puede orientarse aplicando $M_2^{i,1}$ una o dos veces. Esto se hace para todas las esquinas. Tras la composición queda un movimiento $M_2$ que aplicado al estado actual cumple
     \begin{align*}
-        M_2(1,\tau_2,x_2,y_2)=(1,\tau_3,(0,\dots,x_8'),y_3)
+        M_2(1,\tau_2,x_2,y_2)=(1,\tau_3,(x_1',0,\dots,0),y_3)
     \end{align*}
-    Ahora empiezan a entrar en juego las propiedades. El valor de $x_8'$ está determinado por la orientación incial del estado. Es decir, dado que los movimientos de cara preservan la suma del vector de orientaciones,
+    Y el estado resultante conserva la relación de signos y la suma de orientaciones.
+
+    Ahora empiezan a entrar en juego las propiedades. El valor de $x_1'$ está determinado por la orientación incial del estado. Dado que los movimientos de cara preservan la suma del vector de orientaciones,
     \begin{align*}
-        0,1,2=\sum_{i=1}^8 (x_1)_i\equiv \sum_{i=1}^8 (x_2)_i=x_8'
+        0,1,2=\sum_{i=1}^8 (x_1)_i\equiv \sum_{i=1}^8 (x_2)_i=x_1'
     \end{align*}
     quedando
     \begin{align*}
-        M_2(1,\tau_2,x_2,y_2)=(1,\tau_3,(0,\dots,x_8'=0,1,2),y_3)\in P
+        M_2(1,\tau_2,x_2,y_2)=(1,\tau_3,(x_1'\in(0,1,2),0\dots,0),y_3)\in P
     \end{align*}
+    llamamos $x_3=(x_1'\in(0,1,2),0\dots,0),y_3)$
     \textbf{Paso 3.}
 
     El movimiento $M_3^{ijk}$ intercambia $3$ aristas cualesquiera sin tocar las esquinas. Es decir
@@ -1506,18 +1510,53 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
                       \end{pmatrix}
     \end{align*}
     En general los 3-ciclos no generan cualquier permutación. Pero sí generan a las permutaciones de signo positivo. Y el signo de $\tau_3$ está determinado por la relación de signos inicial. Si $\frac{\sgn{\sigma_1}}{\sgn{\tau_1}}=1$, entonces $1=\sgn{1}=\sgn{\tau_3}$. Si $\frac{\sgn{\sigma_1}}{\sgn{\tau_1}}=-1$, entonces $-1=-\sgn{1}=\sgn{\tau_3}$.
-
-    Añadimos una permutación de aristas $\begin{pmatrix}1 & 2\end{pmatrix}$ para que el signo de $\tau_3$ sea positivo. $\tau_3=S_\tau S_\tau \tau_3$
+    
+    De este modo, si $\tau_3$ es de signo positivo, se escribe como una composición de 3-ciclos, y por tanto existe un movimiento $M_3^{-1}$ que cumple
     \begin{align*}
         M_3^{-1}\sigma & =1                   \\
         (M_3^{-1})_x   & =1                   \\
-        M_3^{-1}\tau   & =S_\tau \circ \tau_3
+        M_3^{-1}\tau   & =\tau_3\\
     \end{align*}
-    con $S_\tau =\begin{pmatrix} 1&2 \end{pmatrix}^{0,1}$. Aplicando $\left( S^{-1}\circ M_3^{-1}\right)^{-1}=M_3 \circ S$ al estado actual, obtenemos
+    concluyendo
     \begin{align*}
-        M_3\circ S(1,\tau_3,(0,\dots,x_8'=0,1,2),y_3)=(1,1,(0,\dots,x_8'=0,1,2),y_4) \\
-        M_3(1,\tau_3,)
+        M_3(1,\tau_3,x_3,y_3)=(1,1,x_3,y_4)
     \end{align*}
+
+    Si es de signo negativo, entonces consideramos
+    \begin{align*}
+        \begin{pmatrix}\tau_3(1)&\tau_3(2)\end{pmatrix} \circ \tau_3\circ \begin{pmatrix}
+            1&2
+        \end{pmatrix}=\tau_3
+    \end{align*}
+    y como $\begin{pmatrix} \tau_3(1)&\tau_3(2) \end{pmatrix}\circ \tau_3$ es de signo positivo, existe un movimiento $M_3^{-1}$ que cumple
+    \begin{align*}
+        M_3^{-1}\sigma & =1                   \\
+        (M_3^{-1})_x   & =1                   \\
+        M_3^{-1}\tau   & =\begin{pmatrix}
+                             \tau_3(1) & \tau_3(2)
+                         \end{pmatrix}\circ\tau_3\\
+        \implies M_3^{-1}\tau\circ\begin{pmatrix}
+            1 & 2
+        \end{pmatrix}&=\tau_3
+    \end{align*}
+    si llamamos $S$ a la transformación que intercambia las aristas $1,2$ sin realizar ningún otro cambio, tenemos que
+    \begin{align*}
+        M_3^{-1}S^{-1}\sigma & =1                   \\
+        (M_3^{-1}S^{-1})_x   & =1                   \\
+        M_3^{-1}S^{-1}\tau   & =\tau_3
+    \end{align*}
+    es decir
+    \begin{align*}
+        S\circ M_3(1,\tau_3,x_3,y_3)=(1,1,x_3,y_4)\\
+        M_3(1,\tau_3,x_3,y_3)=S^{-1}\circ(1,1,x_3,y_4)=(1,\begin{pmatrix}
+            1 & 2
+        \end{pmatrix},x_3,y_4)
+    \end{align*}
+    Teniendo entonces que existe $M_3$ tal que
+    \begin{align*}
+        M_3(1,\tau_3,x_3,y_3)=(1,\tau_4,x_3,y_4)
+    \end{align*}
+    con $\tau_4=1$ o $\tau_4=\begin{pmatrix} 1 & 2\end{pmatrix}$. Y las propiedades se conservan por ser movimientos de caras.
 
     \textbf{Paso 4.}
 
@@ -1528,27 +1567,28 @@ Demostramos ahora el teorema fundamental del cubo de Rubik. Que caracteriza el g
         M_4^{ij}\tau    & =1                                             \\
         (M_4^{ij})_y(y) & =y+(y_1=0,\dots,y_i=1,\dots,y_j=1,\dots,y_n=0)
     \end{align*}
-    Tomamos nuevamente una arista pivote. Digamos la $12$. Cada arista $i\neq 12$, con $(y_4)_i\neq 0$ puede reorientarse mediante el movimiento $M_4^{i,12}$. Tras una composición de a lo sumo $11$ movimientos, creamos un $M_4$ que cumple
+    Tomamos nuevamente una arista pivote. Digamos la $1$. Cada arista $i\neq 12$, con $(y_4)_i\neq 0$ puede reorientarse mediante el movimiento $M_4^{i,1}$. Tras una composición de a lo sumo $11$ movimientos, creamos un $M_4$ que cumple
     \begin{align*}
-        M_4(1,1,\mathbf{0},y_4)=(1,1,\mathbf{0},(0,y_{12}'))\in P
+        M_4(1,\tau_4,x_3,y_4)=(1,\tau_4,x_3,(y_1'\in(0,1),0,\dots,0))
     \end{align*}
-    y nuevamente, por la propiedad de estar en $P$
+    y nuevamente, porque los movimientos preservan la suma de las orientaciones, tenemos que el $y_1'$ está determinado por la orientación inicial. Dado que los movimientos de cara preservan la suma del vector de orientaciones,
     \begin{align*}
-        \sum_{i=1}^{12}y_i'=y_{12}'\equiv 0\mod 2\implies y_{12}'=0
+        \sum_{i=1}^{12}y_i'=y_{12}'\equiv \sum_{i=1}^{12}y_i\equiv 0,1\mod 2\implies y_{12}'=0,1
     \end{align*}
-    concluyendo
+    llamando $y_5=(y_1'\in(0,1),0,\dots,0)$
     \begin{align*}
-        M_4(1,1,\mathbf{0},y_4)=(1,1,\mathbf{0},\mathbf{0})\in P
+        M_4(1,\tau_4,x_3,y_4)=(1,\tau_4,x_3,y_5)
     \end{align*}
     \textbf{Paso 5.}
     Uniendo los cuatro movimientos tenemos que existen $M_1,M_2,M_3,M_4\in P$ tales que
     \begin{align*}
-        M_4M_3M_2M_1(\sigma_1,\tau_1,x_1,y_1)=(1,1,\mathbf{0},\mathbf{0})
+        M_4M_3M_2M_1(\sigma_1,\tau_1,x_1,y_1)=(1,\tau_4,x_3,y_5)
     \end{align*}
     Si se invierte el movimiento, se llega a la conclusión de que
     \begin{align*}
-        M_1^{-1}M_2^{-1}M_3^{-1}M_4^{-1}(1,1,\mathbf{0},\mathbf{0})=(\sigma_1,\tau_1,x_1,y_1)\implies (\sigma_1,\tau_1,x_1,y_1)\in \mathcal{O}(1,1,\mathbf{0},\mathbf{0})
+        M_1^{-1}M_2^{-1}M_3^{-1}M_4^{-1}(1,\tau_4,x_3,y_5)=(\sigma_1,\tau_1,x_1,y_1)\implies (\sigma_1,\tau_1,x_1,y_1)\in \mathcal{O}(1,\tau_4,x_3,y_5)
     \end{align*}
+    donde $\tau_4,x_3,y_5$ son determinados por las propiedades iniciales. En particular, si $(\sigma_1,\tau_1,x_1,y_1)\in P$, entonces $\tau_4=1$, $x_3=\mathbf{0}$ y $y_5=\mathbf{0}$.
     Es decir
     \begin{align*}
         P\subseteq\mathcal{O}(1,1,\mathbf{0},\mathbf{0})
@@ -1562,19 +1602,62 @@ Esto nos dice inmediatamente que el número de movimientos válidos del cubo de 
 \begin{align*}
     |\mathcal{O}(1,1,\mathbf{0},\mathbf{0})|=\frac{8!12!\,3^{8}\,2^{12}}{12}\approx 43.25\times 10^{19}
 \end{align*}
-Pensemos ahora en los casos que quedan afuera. Sea $(\sigma,\tau,x,y)\in X$. Existen las posibilidades
+Pero la construcción del teorema también nos dice que todo estado puede llevarse a una de $12$ órbitas disjuntas entre sí. Cada una dada por una propiedad caracteristica. Estas son
 \begin{align*}
-    \sgn{\sigma}=\pm \sgn{\tau}       \\
-    \sum_{i=1}^8x_i\equiv 0,1,2\mod 3 \\
-    \sum_{i=1}^{12}y_i\not\equiv 0,1\mod 2
-\end{align*}
-mediante $\begin{pmatrix}
+    O_1&:=\mathcal{O}(1,1,(0,0,\dots,0),(0,0,\dots,0)) \\
+    O_2&:=\mathcal{O}(1,1,(0,0,\dots,0),(1,0,\dots,0)) \\
+    O_3&:=\mathcal{O}(1,1,(1,0,\dots,0),(0,0,\dots,0)) \\
+    O_4&:=\mathcal{O}(1,1,(1,0,\dots,0),(1,0,\dots,0)) \\
+    O_5&:=\mathcal{O}(1,1,(2,0,\dots,0),(0,0,\dots,0)) \\
+    O_6&:=\mathcal{O}(1,1,(2,0,\dots,0),(1,0,\dots,0)) \\
+    O_7&:=\mathcal{O}(1,\begin{pmatrix}
         1 & 2
-    \end{pmatrix}$ sobre $\sigma$ de ser necesario, se puede hacer que los signos sean iguales. Mediante sumar $(0,\dots,0,+1/+2)$ sobre $x$ de ser necesario, se puede hacer que la suma sea $0\mod 3$. Y mediante sumar $(0,\dots,0/+1)$ sobre $y$ de ser necesario, se puede hacer que la suma sea $0\mod 2$.
-
-Llamamos $T$ al movimiento que hace esto. Y notamos que es invertible. Entonces
-\begin{align*}
-    T(\sigma,\tau,x,y)=(\sigma',\tau',x',y')\in P=\mathcal{O}(1,1,\mathbf{0},\mathbf{0}) \\
-    \implies T^{-1}\circ T(\sigma,\tau,x,y)=T^{-1}M\cdot (1,1,0,0)
+    \end{pmatrix},(0,0,\dots,0),(0,0,\dots,0)) \\
+    O_8&:=\mathcal{O}(1,\begin{pmatrix}
+        1 & 2
+    \end{pmatrix},(0,0,\dots,0),(1,0,\dots,0)) \\
+    O_9&:=\mathcal{O}(1,\begin{pmatrix}
+        1 & 2
+    \end{pmatrix},(1,0,\dots,0),(0,0,\dots,0)) \\
+    O_{10}&:=\mathcal{O}(1,\begin{pmatrix}
+        1 & 2
+    \end{pmatrix},(1,0,\dots,0),(1,0,\dots,0)) \\
+    O_{11}&:=\mathcal{O}(1,\begin{pmatrix}
+        1 & 2
+    \end{pmatrix},(2,0,\dots,0),(0,0,\dots,0)) \\
+    O_{12}&:=\mathcal{O}(1,\begin{pmatrix}
+        1 & 2
+    \end{pmatrix},(2,0,\dots,0),(1,0,\dots,0)) 
 \end{align*}
+y todas con el mismo número de elementos.
+
+Las órbitas forman entonces una partición disjunta del conjunto de estados del cubo de Rubik.
+\begin{align*}
+    X=\bigsqcup_{i=1}^{12}O_i
+\end{align*}
+Y cada órbita es un conjunto de estados que no se pueden alcanzar entre sí mediante movimientos válidos del cubo. Las configuraciones iniciales de cada órbita se muestran en la figura \ref{fig:config_iniciales_orbitas}
+\begin{figure}
+    \begin{tikzpicture}
+\matrix[
+    nodes={anchor=center},
+    row sep=15mm,
+    column sep=-7mm
+]{
+    \node{\input{Orbitas/fig1.tex}}; &
+    \node{\input{Orbitas/fig2.tex}}; &
+    \node{\input{Orbitas/fig3.tex}}; &
+    \node{\input{Orbitas/fig4.tex}}; \\
+    \node{\input{Orbitas/fig5.tex}}; &
+    \node{\input{Orbitas/fig6.tex}}; &
+    \node{\input{Orbitas/fig7.tex}}; &
+    \node{\input{Orbitas/fig8.tex}}; \\
+    \node{\input{Orbitas/fig9.tex}}; &
+    \node{\input{Orbitas/fig10.tex}}; &
+    \node{\input{Orbitas/fig11.tex}}; &
+    \node{\input{Orbitas/fig12.tex}}; \\
+};
+\end{tikzpicture}
+\caption{Se muestran las doce configuraciones base. Sus órbitas son una partición disjunta del espacio de configuraciones.}
+\label{fig:config_iniciales_orbitas}
+\end{figure}
 \end{document}
