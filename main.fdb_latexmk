@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1784663008.7209 "e:/Octavio/Estudios/Proyectos propios/Final de estructuras algebráicas/main.tex" "main.pdf" "main" 1784663011.30634 0
+["pdflatex"] 1784663287.5715 "e:/Octavio/Estudios/Proyectos propios/Final de estructuras algebráicas/main.tex" "main.pdf" "main" 1784663290.36745 0
   "C:/Users/Octavio/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1784658469 121097 8af9dafefbd8dba488fad9fdf644f929 ""
   "C:/Users/Octavio/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1784611312 13368075 f7f0ff6dfad01c19936e2cc55c268bb3 ""
   "C:/Users/Octavio/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -205,10 +205,10 @@
   "Orbitas/fig7.tex" 1784663002 233 87e9cdd77233250e17469b29f55de0b4 ""
   "Orbitas/fig8.tex" 1784663002 233 0623c8c4726478982f9cce47208ddaaa ""
   "Orbitas/fig9.tex" 1784663002 233 0ed5cf9eea1dd5bb3c1f5dfee8bdc4d6 ""
-  "e:/Octavio/Estudios/Proyectos propios/Final de estructuras algebráicas/main.tex" 1784663002 87491 28f6896c269bd80180b76a57868d9588 ""
-  "main.aux" 1784663011 4115 66412e6b87e43fc1efdf0de63474598b "pdflatex"
-  "main.out" 1784663011 1778 35891a48ead66d1ba17e56654708ed11 "pdflatex"
-  "main.tex" 1784663002 87491 28f6896c269bd80180b76a57868d9588 ""
+  "e:/Octavio/Estudios/Proyectos propios/Final de estructuras algebráicas/main.tex" 1784663286 87491 28f6896c269bd80180b76a57868d9588 ""
+  "main.aux" 1784663290 4115 66412e6b87e43fc1efdf0de63474598b "pdflatex"
+  "main.out" 1784663290 1778 35891a48ead66d1ba17e56654708ed11 "pdflatex"
+  "main.tex" 1784663286 87491 28f6896c269bd80180b76a57868d9588 ""
   (generated)
   "main.aux"
   "main.log"
